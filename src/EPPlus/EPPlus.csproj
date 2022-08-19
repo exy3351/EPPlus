@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<PackageLicenseFile>license.md</PackageLicenseFile>
 		<Description>A spreadsheet library for .NET framework and .NET core</Description>
-		<AssemblyName>EPPlus</AssemblyName>
+		<AssemblyName>GISQ.EPPlus</AssemblyName>
 		<RootNamespace>OfficeOpenXml</RootNamespace>
 		<RepositoryUrl>https://github.com/EPPlusSoftware/EPPlus.git</RepositoryUrl>
 		<PackageTags>Excel ooxml</PackageTags>
