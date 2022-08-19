@@ -609,93 +609,7 @@ namespace OfficeOpenXml
                 return _encryption;
             }
         }
-        private static LicenseContext? _licenseType = null;
-        internal static bool _licenseSet = false;
-        /// <summary>
-        /// To use the EPPlus library in debug mode a Licensetype must be specified.
-        /// Use LicenseContext.NonCommercial if you use EPPlus in an non commercial context.
-        /// Use LicenseContext.Commercial if you have purchased an license to use EPPlus
-        /// See https://epplussoftware.com/developers/licenseexception
-        /// </summary>
-        public static LicenseContext? LicenseContext
-        {
-            get
-            {                
-                return _licenseType;
-            }
-            set
-            {
-                _licenseType = value;
-                _licenseSet = _licenseType != null;
-            }
-        }
-        internal static bool IsLicenseSet()
-        {
-            if(_licenseSet==true)
-            {
-                return true;
-            }
-            else
-            {
-                if (Debugger.IsAttached == false)   //This check is only performed if a debugger is attached. 
-                {
-                    _licenseSet = true;
-                    return true;
-                }
-                var v = Environment.GetEnvironmentVariable("EPPlusLicenseContext",EnvironmentVariableTarget.User);
-                if(string.IsNullOrEmpty(v))
-                {
-                    v = Environment.GetEnvironmentVariable("EPPlusLicenseContext", EnvironmentVariableTarget.Process);
-                }
-                bool inEnvironment;
-                if (string.IsNullOrEmpty(v))
-                {
-#if (Core)
-                    var build = new ConfigurationBuilder()
-                        .SetBasePath(Directory.GetCurrentDirectory())
-                        .AddJsonFile("appsettings.json", true, false);
-                    var c = build.Build();
-
-                    v = c["EPPlus:ExcelPackage:LicenseContext"];
-
-#else
-                    v = ConfigurationManager.AppSettings["EPPlus:ExcelPackage.LicenseContext"];
-#endif
-                    inEnvironment = false;
-                }
-                else
-                {
-                    inEnvironment = true;
-                }
-
-                if(string.IsNullOrEmpty(v))
-                {
-                    inEnvironment = false;
-                    return false;
-                }
-                else
-                {
-                    v = v.Trim();
-                    if (v.Equals("commercial", StringComparison.OrdinalIgnoreCase))
-                    {
-                        LicenseContext = OfficeOpenXml.LicenseContext.Commercial;
-                        _licenseSet = true;
-                        return _licenseSet;
-                    }
-                    else if (v.Equals("noncommercial", StringComparison.OrdinalIgnoreCase))
-                    {
-                        LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
-                        _licenseSet = true;
-                        return _licenseSet;
-                    }
-                }
-
-                if(inEnvironment)
-                    throw new LicenseException("LicenseContext is set to an invalid value in the environment variable 'EPPlusLicenseContext'. Please use Commercial or Noncommercial");
-                else
-                    throw new LicenseException("LicenseContext is set to an invalid value in the configuration file, Key: ExcelPackage.LicenseContext. Please use Commercial or Noncommercial");
-            }
-        }
+        
 		/// <summary>
 		/// Returns a reference to the workbook component within the package.
 		/// All worksheets and cells can be accessed through the workbook.
@@ -707,10 +621,7 @@ namespace OfficeOpenXml
                 CheckNotDisposed();
                 if (_workbook == null)
                 {
-                    if(IsLicenseSet()==false)
-                    {
-                        throw (new LicenseException("Please set the ExcelPackage.LicenseContext property. See https://epplussoftware.com/developers/licenseexception"));
-                    }
+                    
                     var nsm = CreateDefaultNSM();
 
                     _workbook = new ExcelWorkbook(this, nsm);

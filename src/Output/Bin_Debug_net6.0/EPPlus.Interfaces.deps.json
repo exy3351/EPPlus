@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "EPPlus.Interfaces/6.0.6": {
+        "runtime": {
+          "EPPlus.Interfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EPPlus.Interfaces/6.0.6": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
