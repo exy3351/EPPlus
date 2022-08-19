@@ -21,7 +21,10 @@
 		<AssemblyVersion>6.0.6.0</AssemblyVersion>
 		<FileVersion>6.0.6.0</FileVersion>
 		<Version>6.0.6</Version>
-
+		<PackageProjectUrl>https://epplussoftware.com</PackageProjectUrl>
+		<Company>EPPlus Software AB</Company>
+		<Product>EPPlus</Product>
+		<Authors>EPPlus Software AB</Authors>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' != 'Release'">

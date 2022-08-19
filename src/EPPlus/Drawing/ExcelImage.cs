@@ -13,12 +13,9 @@
 using OfficeOpenXml.Drawing.Interfaces;
 using System;
 using System.IO;
-#if !NET35 && !NET40
 using System.Threading.Tasks;
-#endif
-#if NETFULL
 using System.Drawing;
-#endif
+
 namespace OfficeOpenXml.Drawing
 {
     /// <summary>
@@ -195,7 +192,6 @@ namespace OfficeOpenXml.Drawing
                 return SetImage(byRet, pictureType);
             }
         }
-#if !NET35
         /// <summary>
         /// Sets a new image. 
         /// </summary>
@@ -255,7 +251,6 @@ namespace OfficeOpenXml.Drawing
             return SetImage(b, type, true);
         }
 
-#endif
         internal ExcelImage SetImageNoContainer(byte[] image, ePictureType pictureType)
         {
             Type = pictureType;

@@ -26,9 +26,7 @@ using System.IO;
 using OfficeOpenXml.Table;
 using OfficeOpenXml.Drawing.Slicer;
 using OfficeOpenXml.Drawing.Controls;
-#if !NET35 && !NET40
 using System.Threading.Tasks;
-#endif
 using System.Xml;
 
 namespace OfficeOpenXml.Drawing
@@ -135,8 +133,6 @@ namespace OfficeOpenXml.Drawing
             }
         }
 
-
-        #region NamespaceManager
         /// <summary>
         /// Creates the NamespaceManager. 
         /// </summary>
@@ -164,8 +160,7 @@ namespace OfficeOpenXml.Drawing
             NameSpaceManager.AddNamespace("asvg", "http://schemas.microsoft.com/office/drawing/2016/SVG/main");
         }
         internal XmlNamespaceManager NameSpaceManager { get; private set; } = null;
-        #endregion
-        #region IEnumerable Members
+
         /// <summary>
         /// Get the enumerator
         /// </summary>
@@ -174,14 +169,11 @@ namespace OfficeOpenXml.Drawing
         {
             return (_drawingsList.GetEnumerator());
         }
-        #region IEnumerable<ExcelDrawing> Members
 
         IEnumerator<ExcelDrawing> IEnumerable<ExcelDrawing>.GetEnumerator()
         {
             return (_drawingsList.GetEnumerator());
         }
-
-        #endregion
 
         /// <summary>
         /// Returns the drawing at the specified position.  
@@ -259,8 +251,7 @@ namespace OfficeOpenXml.Drawing
         ZipPackagePart IPictureRelationDocument.RelatedPart => _part;
 
         Uri IPictureRelationDocument.RelatedUri => _uriDrawing;
-        #endregion
-        #region Add functions
+
         /// <summary>
         /// Adds a new chart to the worksheet.
         /// Stock charts cannot be added by this method. See <see cref="ExcelDrawings.AddStockChart(string, eStockChartType, ExcelRangeBase)"/>
@@ -836,8 +827,8 @@ namespace OfficeOpenXml.Drawing
             _drawingNames.Add(grp.Name, _drawingsList.Count - 1);
             return grp;
         }
-#region AddPictureAsync
-#if !NET35 && !NET40
+
+
         /// <summary>
         /// Adds a picture to the worksheet
         /// </summary>
@@ -922,8 +913,8 @@ namespace OfficeOpenXml.Drawing
             AddPicture(Name, pic);
             return pic;
         }
-#endif
-#endregion
+
+
         private void AddPicture(string Name, ExcelPicture pic)
         {
             pic.Name = Name;
@@ -1112,7 +1103,7 @@ namespace OfficeOpenXml.Drawing
             _drawingNames.Add(Name, _drawingsList.Count - 1);
             return shape;
         }
-#region Add Slicers
+
         /// <summary>
         /// Adds a slicer to a table column
         /// </summary>
@@ -1171,7 +1162,7 @@ namespace OfficeOpenXml.Drawing
 
             return slicer;
         }
-#endregion
+
         ///// <summary>
         ///// Adds a line connectin two shapes
         ///// </summary>
@@ -1226,7 +1217,7 @@ namespace OfficeOpenXml.Drawing
             _drawingNames.Add(Name, _drawingsList.Count - 1);
             return shape;
         }
-        #region Form Controls
+
         /// <summary>
         /// Adds a form control to the worksheet
         /// </summary>
@@ -1335,7 +1326,7 @@ namespace OfficeOpenXml.Drawing
         {
             return (ExcelControlScrollBar)AddControl(Name, eControlType.ScrollBar);
         }
-#endregion
+
         private XmlElement CreateDrawingXml(eEditAs topNodeType = eEditAs.TwoCell, bool asAlterniveContent=false)
         {
             if (DrawingXml.DocumentElement == null)
@@ -1415,8 +1406,7 @@ namespace OfficeOpenXml.Drawing
 
             return drawNode;
         }
-#endregion
-#region Remove methods
+
         /// <summary>
         /// Removes a drawing.
         /// </summary>
@@ -1488,8 +1478,7 @@ namespace OfficeOpenXml.Drawing
                 RemoveDrawing(0);
             }
         }
-#endregion
-#region BringToFront & SendToBack
+
         internal void BringToFront(ExcelDrawing drawing)
         {
             var index = _drawingsList.IndexOf(drawing);
@@ -1539,7 +1528,7 @@ namespace OfficeOpenXml.Drawing
                 _drawingNames[_drawingsList[i].Name]++;
             }
         }
-#endregion
+
         internal void AdjustWidth(double[,] pos)
         {
             var ix = 0;

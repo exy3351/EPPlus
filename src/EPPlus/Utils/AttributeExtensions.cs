@@ -24,7 +24,7 @@ namespace OfficeOpenXml.Utils
         {
             //return member.GetCustomAttributes(typeof(T), false).FirstOrDefault() != null;
 
-#if (NET35 || NET40)
+#if NETFRAMEWORK
             return member.GetCustomAttributes(typeof(T), inherit ?? false).FirstOrDefault() != null;
 #else
             if (!inherit.HasValue)
@@ -41,7 +41,7 @@ namespace OfficeOpenXml.Utils
         internal static T GetFirstAttributeOfType<T>(this MemberInfo member, bool? inherit = default(bool?))
             where T : Attribute
         {
-#if (NET35 || NET40)
+#if NETFRAMEWORK
             return member.GetCustomAttributes(typeof(T), false).FirstOrDefault() as T;
 #else
             if (!inherit.HasValue)

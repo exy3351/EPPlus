@@ -1,5 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<AssemblyName>EPPlus.Interfaces</AssemblyName>
+		
 		<PackageLicenseFile>license.md</PackageLicenseFile>
 		<RepositoryType>git</RepositoryType>
 		<SignAssembly>true</SignAssembly>

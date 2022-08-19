@@ -1,9 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<PackageProjectUrl>https://epplussoftware.com</PackageProjectUrl>
-		<Company>EPPlus Software AB</Company>
-		<Product>EPPlus</Product>
-		<Authors>EPPlus Software AB</Authors>
 		<PackageLicenseFile>license.md</PackageLicenseFile>
 		<Description>A spreadsheet library for .NET framework and .NET core</Description>
 		<AssemblyName>EPPlus</AssemblyName>

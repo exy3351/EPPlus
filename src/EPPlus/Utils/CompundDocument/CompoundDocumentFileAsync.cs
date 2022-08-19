@@ -17,14 +17,14 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-#if !NET35 && !NET40
+
 using System.Threading.Tasks;
-#endif
+
 namespace OfficeOpenXml.Utils.CompundDocument
 {
     internal partial class CompoundDocumentFile 
     {
-#if !NET35 && !NET40
+
         /// <summary>
         /// Verifies that the header is correct.
         /// </summary>
@@ -61,7 +61,7 @@ namespace OfficeOpenXml.Utils.CompundDocument
             ms.Position = pos;
             return IsCompoundDocument(b);
         }
-#endif
+
     }
 }
 

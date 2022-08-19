@@ -23,13 +23,13 @@ using OfficeOpenXml.Drawing;
 using OfficeOpenXml.Drawing.Interfaces;
 using System.Linq;
 using OfficeOpenXml.Export.HtmlExport.Exporters;
-#if !NET35
+
 using System.Threading.Tasks;
-#endif
+
 
 namespace OfficeOpenXml.Export.HtmlExport
 {
-#if !NET35 && !NET40
+
     internal partial class EpplusCssWriter : HtmlWriterBase
     {
         internal async Task RenderAdditionalAndFontCssAsync(string tableClass)
@@ -390,5 +390,5 @@ namespace OfficeOpenXml.Export.HtmlExport
             await _writer.FlushAsync();
         }
     }
-#endif
+
 }

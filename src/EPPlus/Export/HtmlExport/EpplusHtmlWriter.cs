@@ -12,14 +12,9 @@
  *************************************************************************************************/
 using OfficeOpenXml.Style;
 using OfficeOpenXml.Utils;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-#if !NET35
-using System.Threading.Tasks;
-#endif
 
 namespace OfficeOpenXml.Export.HtmlExport
 {

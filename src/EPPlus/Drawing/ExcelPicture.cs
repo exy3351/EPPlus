@@ -17,12 +17,10 @@ using System.IO;
 using OfficeOpenXml.Utils;
 using OfficeOpenXml.Drawing.Interfaces;
 using OfficeOpenXml.Drawing.Style.Effect;
-#if NETFULL
 using System.Drawing.Imaging;
-#endif
-#if !NET35 && !NET40
+
 using System.Threading.Tasks;
-#endif
+
 namespace OfficeOpenXml.Drawing
 {
     /// <summary>
@@ -30,11 +28,11 @@ namespace OfficeOpenXml.Drawing
     /// </summary>
     public sealed class ExcelPicture : ExcelDrawing, IPictureContainer
     {
-#region "Constructors"
+
         internal ExcelPicture(ExcelDrawings drawings, XmlNode node, Uri hyperlink, ePictureType type) :
             base(drawings, node, "xdr:pic", "xdr:nvPicPr/xdr:cNvPr")
         {
-            CreatePicNode(node,type);
+            CreatePicNode(node, type);
             Hyperlink = hyperlink;
             Image = new ExcelImage(this);
         }
@@ -89,7 +87,7 @@ namespace OfficeOpenXml.Drawing
                 return eDrawingType.Picture;
             }
         }
-#if !NET35 && !NET40
+
         internal async Task LoadImageAsync(Stream stream, ePictureType type)
         {
             var img = new byte[stream.Length];
@@ -97,8 +95,8 @@ namespace OfficeOpenXml.Drawing
             await stream.ReadAsync(img, 0, (int)stream.Length).ConfigureAwait(false);
 
             SaveImageToPackage(type, img);
-        }        
-#endif
+        }
+
         internal void LoadImage(Stream stream, ePictureType type)
         {
             var img = new byte[stream.Length];
@@ -114,7 +112,7 @@ namespace OfficeOpenXml.Drawing
                type == ePictureType.Wmz)
             {
                 img = ImageReader.ExtractImage(img, out ePictureType? pt);
-                if(pt==null)
+                if (pt == null)
                 {
                     throw (new InvalidDataException($"Invalid image of type {type}"));
                 }
@@ -124,9 +122,9 @@ namespace OfficeOpenXml.Drawing
             ContentType = PictureStore.GetContentType(type.ToString());
             var newUri = GetNewUri(package, "/xl/media/image{0}." + type.ToString());
             var store = _drawings._package.PictureStore;
-            var pc = _drawings as IPictureRelationDocument;            
+            var pc = _drawings as IPictureRelationDocument;
             var ii = store.AddImage(img, newUri, type);
-            
+
             IPictureContainer container = this;
             container.UriPic = ii.Uri;
             string relId;
@@ -176,7 +174,7 @@ namespace OfficeOpenXml.Drawing
             newPic.relID = relID;
             //_drawings._pics.Add(newPic);
         }
-#endregion
+
         private void SetPosDefaults(float width, float height)
         {
             EditAs = eEditAs.OneCell;
@@ -193,7 +191,7 @@ namespace OfficeOpenXml.Drawing
             xml.Append("<xdr:nvPicPr>");
             xml.AppendFormat("<xdr:cNvPr id=\"{0}\" descr=\"\" />", _id);
             xml.Append("<xdr:cNvPicPr><a:picLocks noChangeAspect=\"1\" /></xdr:cNvPicPr></xdr:nvPicPr><xdr:blipFill>");
-            if(type==ePictureType.Svg)
+            if (type == ePictureType.Svg)
             {
                 xml.Append("<a:blip xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" r:embed=\"\" cstate=\"print\"><a:extLst><a:ext uri=\"{28A0092B-C50C-407E-A947-70E740481C1C}\"><a14:useLocalDpi xmlns:a14=\"http://schemas.microsoft.com/office/drawing/2010/main\" val=\"0\"/></a:ext><a:ext uri=\"{96DAC541-7B7A-43D3-8B79-37D633B846F1}\"><asvg:svgBlip xmlns:asvg=\"http://schemas.microsoft.com/office/drawing/2016/SVG/main\" r:embed=\"\"/></a:ext></a:extLst></a:blip>");
             }
@@ -299,7 +297,7 @@ namespace OfficeOpenXml.Drawing
         /// Relative to original picture size
         /// </summary>
         public bool PreferRelativeResize
-        { 
+        {
             get
             {
                 return GetXmlNodeBool(_preferRelativeResizePath);

@@ -15,12 +15,9 @@ using OfficeOpenXml.Core.CellStore;
 using OfficeOpenXml.Export.HtmlExport.Settings;
 using OfficeOpenXml.Table;
 using OfficeOpenXml.Utils;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-#if !NET35 && !NET40
+
 using System.Threading.Tasks;
 
 namespace OfficeOpenXml.Export.HtmlExport.Exporters
@@ -140,4 +137,4 @@ namespace OfficeOpenXml.Export.HtmlExport.Exporters
         }
     }
 }
-#endif
+

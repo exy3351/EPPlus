@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<AssemblyName>EPPlus.System.Drawing</AssemblyName>
+		
 		<SignAssembly>true</SignAssembly>
 		<PackageLicenseFile>license.md</PackageLicenseFile>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyOriginatorKeyFile>EPPlus.System.Drawing.snk</AssemblyOriginatorKeyFile>
 		<RootNamespace>OfficeOpenXml.System.Drawing</RootNamespace>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
@@ -16,7 +17,7 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
 		<PackageReference Include="System.Drawing.Common">
-			<Version>5.0.0</Version>
+			<Version>6.0.0</Version>
 		</PackageReference>
 	</ItemGroup>
 
@@ -37,6 +38,7 @@
 			<Version>4.7.1</Version>
 		</PackageReference>
 	</ItemGroup>
+	
 	<ItemGroup>
 		<None Include="EPPlusLogo.png">
 			<Pack>True</Pack>

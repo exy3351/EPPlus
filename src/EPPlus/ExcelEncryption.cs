@@ -190,12 +190,6 @@ namespace OfficeOpenXml
             {
                 stream.Seek(0, SeekOrigin.Begin);
             }
-#if (NET35)
-            else
-            {
-                throw new InvalidOperationException("Stream must be seekable");
-            }
-#endif
 
             MemoryStream ms;
             if(stream is MemoryStream)
@@ -204,14 +198,8 @@ namespace OfficeOpenXml
             }
             else
             {
-#if (NET35)
-                var b = new byte[stream.Length];
-                stream.Read(b, 0, (int)stream.Length);
-                ms = new MemoryStream(b);
-#else
                 ms = new MemoryStream();
                 stream.CopyTo(ms);
-#endif
             }
             return e.DecryptPackage(ms, new ExcelEncryption() { Password = password, _isEncrypted=true });
         }

@@ -14,15 +14,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-#if !NET35 && !NET40
 using System.Threading.Tasks;
-#endif
 
 namespace OfficeOpenXml.Export.HtmlExport
 {
     internal partial class EpplusHtmlWriter
     {
-#if !NET35 && !NET40
+
         public async Task RenderBeginTagAsync(string elementName, bool closeElement = false)
         {
             _newLine = false;
@@ -60,6 +58,6 @@ namespace OfficeOpenXml.Export.HtmlExport
             await _writer.WriteAsync($"</{elementName}>");
             await _writer.FlushAsync();
         }
-#endif
+
     }
 }

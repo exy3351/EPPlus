@@ -18,15 +18,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-#if !NET35 && !NET40
+
 using System.Threading.Tasks;
-#endif
+
 namespace OfficeOpenXml.Export.HtmlExport
 {
     internal class CellDataWriter
     {
-        
-
         public void Write(ExcelRangeBase cell, string dataType, EpplusHtmlWriter writer, HtmlExportSettings settings, AccessibilitySettings accessibilitySettings, bool addRowScope, HtmlImage image)
         {
             if (dataType != ColumnDataTypeManager.HtmlDataTypes.String && settings.RenderDataAttributes)
@@ -61,7 +59,7 @@ namespace OfficeOpenXml.Export.HtmlExport
             writer.RenderEndTag();
             writer.ApplyFormat(settings.Minify);
         }
-#if !NET35
+
         public async Task WriteAsync(ExcelRangeBase cell, string dataType, EpplusHtmlWriter writer, HtmlExportSettings settings, AccessibilitySettings accessibilitySettings, bool addRowScope, HtmlImage image)
         {
             if (dataType != ColumnDataTypeManager.HtmlDataTypes.String && settings.RenderDataAttributes)
@@ -95,6 +93,6 @@ namespace OfficeOpenXml.Export.HtmlExport
             await writer.RenderEndTagAsync();
             await writer.ApplyFormatAsync(settings.Minify);
         }
-#endif
+
     }
 }

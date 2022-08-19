@@ -10,29 +10,18 @@
  *************************************************************************************************
   11/07/2021         EPPlus Software AB       Added Html Export
  *************************************************************************************************/
-using OfficeOpenXml.Style;
-using OfficeOpenXml.Style.Table;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using OfficeOpenXml.Drawing;
-using OfficeOpenXml.Drawing.Style.Coloring;
-using OfficeOpenXml.Table;
-using System.Drawing;
-using OfficeOpenXml.Drawing.Theme;
-using OfficeOpenXml.Style.Dxf;
-using static OfficeOpenXml.Export.HtmlExport.ColumnDataTypeManager;
-using System.Text;
-using System.Globalization;
-using OfficeOpenXml.Style.XmlAccess;
-using OfficeOpenXml.Utils;
 using OfficeOpenXml.Export.HtmlExport.Exporters;
-#if !NET35 && !NET40
+using OfficeOpenXml.Style;
+using OfficeOpenXml.Style.Dxf;
+using OfficeOpenXml.Utils;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Text;
 using System.Threading.Tasks;
-#endif
+using static OfficeOpenXml.Export.HtmlExport.ColumnDataTypeManager;
+
 namespace OfficeOpenXml.Export.HtmlExport
 {
-#if !NET35 && !NET40
     internal partial class EpplusTableCssWriter : HtmlWriterBase
     {
         internal async Task RenderAdditionalAndFontCssAsync()
@@ -234,5 +223,4 @@ namespace OfficeOpenXml.Export.HtmlExport
             }
         }
     }
-#endif
 }

@@ -11,7 +11,6 @@
   01/27/2020         EPPlus Software AB       Initial release EPPlus 5
  *************************************************************************************************/
 using OfficeOpenXml.Attributes;
-using OfficeOpenXml.Compatibility;
 using OfficeOpenXml.LoadFunctions;
 using OfficeOpenXml.LoadFunctions.Params;
 using OfficeOpenXml.Table;
@@ -25,16 +24,14 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-#if !NET35 && !NET40
 using System.Threading.Tasks;
-#endif
+
 namespace OfficeOpenXml
 {
     public partial class ExcelRangeBase
     {
-        #region LoadFromDataReader
+
         /// <summary>
         /// Load the data from the datareader starting from the top left cell of the range
         /// </summary>
@@ -93,7 +90,7 @@ namespace OfficeOpenXml
             }
             return _worksheet.Cells[_fromRow, _fromCol, row - 1, _fromCol + fieldCount - 1];
         }
-#if !NET35 && !NET40
+
         /// <summary>
         /// Load the data from the datareader starting from the top left cell of the range
         /// </summary>
@@ -171,9 +168,8 @@ namespace OfficeOpenXml
             }
             return _worksheet.Cells[_fromRow, _fromCol, row - 1, _fromCol + fieldCount - 1];
         }
-#endif
-        #endregion
-        #region LoadFromDataTable
+
+
         /// <summary>
         /// Load the data from the datatable starting from the top left cell of the range
         /// </summary>
@@ -233,8 +229,7 @@ namespace OfficeOpenXml
             paramsConfig.Invoke(parameters);
             return LoadFromDataTable(table, parameters.PrintHeaders, parameters.TableStyle);
         }
-#endregion
-        #region LoadFromArrays
+
         /// <summary>
         /// Loads data from the collection of arrays of objects into the range, starting from
         /// the top-left cell.
@@ -256,8 +251,7 @@ namespace OfficeOpenXml
 
             return _worksheet.Cells[_fromRow, _fromCol, row - 1, _fromCol + maxColumn - 1];
         }
-#endregion
-        #region LoadFromCollection
+
         /// <summary>
         /// Load a collection into a the worksheet starting from the top left row of the range.
         /// </summary>
@@ -371,8 +365,7 @@ namespace OfficeOpenXml
             var func = new LoadFromCollection<T>(this, collection, param);
             return func.Load();
         }
-        #endregion
-        #region LoadFromText
+
         /// <summary>
         /// Loads a CSV text into a range starting from the top left cell.
         /// Default settings is Comma separation
@@ -466,8 +459,8 @@ namespace OfficeOpenXml
 
             return LoadFromText(File.ReadAllText(TextFile.FullName, Format.Encoding), Format, TableStyle, FirstRowIsHeader);
         }
-#region LoadFromText async
-#if !NET35 && !NET40
+
+
         /// <summary>
         /// Loads a CSV file into a range starting from the top left cell.
         /// </summary>
@@ -520,10 +513,8 @@ namespace OfficeOpenXml
             var sr = new StreamReader(fs, Format.Encoding);
             return LoadFromText(await sr.ReadToEndAsync().ConfigureAwait(false), Format, TableStyle, FirstRowIsHeader);
         }
-#endif
-        #endregion
-        #endregion
-        #region LoadFromDictionaries
+
+
         /// <summary>
         /// Load a collection of dictionaries (or dynamic/ExpandoObjects) into the worksheet starting from the top left row of the range.
         /// These dictionaries should have the same set of keys.
@@ -671,7 +662,7 @@ namespace OfficeOpenXml
             var func = new LoadFromDictionaries(this, items, param);
             return func.Load();
         }
-#if !NET35 && !NET40
+
         /// <summary>
         /// Load a collection of dictionaries (or dynamic/ExpandoObjects) into the worksheet starting from the top left row of the range.
         /// These dictionaries should have the same set of keys.
@@ -717,7 +708,7 @@ namespace OfficeOpenXml
             var func = new LoadFromDictionaries(this, items, param);
             return func.Load();
         }
-#endif
+
 
         /// <summary>
         /// Load a collection of dictionaries (or dynamic/ExpandoObjects) into the worksheet starting from the top left row of the range.
@@ -740,7 +731,7 @@ namespace OfficeOpenXml
             return func.Load();
         }
 
-#if !NET35 && !NET40
+
         /// <summary>
         /// Load a collection of dictionaries (or dynamic/ExpandoObjects) into the worksheet starting from the top left row of the range.
         /// These dictionaries should have the same set of keys.
@@ -761,8 +752,7 @@ namespace OfficeOpenXml
             var func = new LoadFromDictionaries(this, items, param);
             return func.Load();
         }
-#endif
 
-        #endregion
+
     }
 }
