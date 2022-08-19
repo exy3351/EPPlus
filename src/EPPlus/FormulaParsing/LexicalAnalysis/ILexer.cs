@@ -17,9 +17,23 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface ILexer
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         IEnumerable<Token> Tokenize(string input);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="worksheet"></param>
+        /// <returns></returns>
         IEnumerable<Token> Tokenize(string input, string worksheet);
     }
 }

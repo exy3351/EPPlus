@@ -64,7 +64,6 @@ namespace OfficeOpenXml.Export.HtmlExport.Exporters
             return exporter;
         }
 
-#if !NET35 && !NET40
         public static HtmlRangeExporterAsync CreateHtmlExporterAsync(HtmlRangeExportSettings settings, ExcelRangeBase range, Dictionary<string, int> styleCache)
         {
             var exporter = new HtmlRangeExporterAsync(settings, range);
@@ -106,7 +105,6 @@ namespace OfficeOpenXml.Export.HtmlExport.Exporters
             exporter.SetStyleCache(styleCache);
             return exporter;
         }
-#endif
     }
 }
 

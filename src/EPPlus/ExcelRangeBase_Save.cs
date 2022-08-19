@@ -19,14 +19,12 @@ using System.Text;
 using System.Xml;
 using System.Data;
 using OfficeOpenXml.Export.ToDataTable;
-#if !NET35 && !NET40
 using System.Threading.Tasks;
-#endif
+
 namespace OfficeOpenXml
 {
     public partial class ExcelRangeBase
     {
-        #region ToDataTable
 
         /// <summary>
         /// Returns the range as a <see cref="DataTable"/> with the <see cref="ToDataTableOptions.Default"/> settings.
@@ -94,8 +92,7 @@ namespace OfficeOpenXml
             var func = new ToDataTable(options, this);
             return func.Execute(dataTable);
         }
-        #endregion
-        #region ToText / SaveToText
+
         /// <summary>
         /// Converts a range to text in CSV format.
         /// </summary>
@@ -183,9 +180,7 @@ namespace OfficeOpenXml
             if (!string.IsNullOrEmpty(Format.Footer)) sw.Write(Format.EOL + Format.Footer);
             sw.Flush();
         }
-        #endregion
-        #region ToText / SaveToText async
-        #if !NET35 && !NET40
+
         /// <summary>
         /// Converts a range to text in CSV format.
         /// </summary>
@@ -281,9 +276,7 @@ namespace OfficeOpenXml
             if (!string.IsNullOrEmpty(Format.Footer)) await sw.WriteAsync(Format.EOL + Format.Footer).ConfigureAwait(false); 
             sw.Flush();
         }
-#endif
-        #endregion
-        #region ToJson
+
         /// <summary>
         /// Returns the range as JSON
         /// </summary>
@@ -330,9 +323,7 @@ namespace OfficeOpenXml
             var re = new JsonRangeExport(this, s);
             re.Export(stream);
         }
-        #endregion
-        #region SaveToJson Async
-#if !NET35 && !NET40
+
         /// <summary>
         /// Save the range to json
         /// </summary>
@@ -356,8 +347,7 @@ namespace OfficeOpenXml
             var re = new JsonRangeExport(this, s);
             await re.ExportAsync(stream);
         }
-#endif
-#endregion
+
         private static CultureInfo GetCultureInfo(ExcelOutputTextFormat Format)
         {
             var ci = (CultureInfo)(Format.Culture.Clone() ?? CultureInfo.InvariantCulture.Clone());
@@ -444,11 +434,7 @@ namespace OfficeOpenXml
                 }
                 else if (v._value is TimeSpan ts)
                 {
-#if NET35
-                            t = ts.Ticks.ToString(ci);
-#else
                     t = ts.ToString(fmt, ci);
-#endif
                 }
                 else
                 {

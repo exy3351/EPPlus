@@ -17,8 +17,18 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ExcelCell
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="formula"></param>
+        /// <param name="colIndex"></param>
+        /// <param name="rowIndex"></param>
         public ExcelCell(object val, string formula, int colIndex, int rowIndex)
         {
             Value = val;
@@ -26,13 +36,21 @@ namespace OfficeOpenXml.FormulaParsing
             ColIndex = colIndex;
             RowIndex = rowIndex;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int ColIndex { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int RowIndex { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public object Value { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string Formula { get; private set; }
     }
 }

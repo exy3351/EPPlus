@@ -12,12 +12,11 @@
  *************************************************************************************************/
 using System;
 using System.Collections.Generic;
-#if NETFULL
 using System.Drawing;
-#endif
 using System.Globalization;
 using System.Text;
 using System.Xml;
+
 namespace OfficeOpenXml.Style.XmlAccess
 {
     /// <summary>

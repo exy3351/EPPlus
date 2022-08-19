@@ -33,12 +33,20 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
     /// </summary>
     public abstract class ExcelFunction
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public ExcelFunction()
             : this(new ArgumentCollectionUtil(), new ArgumentParsers(), new CompileResultValidators())
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="argumentCollectionUtil"></param>
+        /// <param name="argumentParsers"></param>
+        /// <param name="compileResultValidators"></param>
         public ExcelFunction(
             ArgumentCollectionUtil argumentCollectionUtil, 
             ArgumentParsers argumentParsers,
@@ -52,12 +60,16 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
         private readonly ArgumentCollectionUtil _argumentCollectionUtil;
         private readonly ArgumentParsers _argumentParsers;
         private readonly CompileResultValidators _compileResultValidators;
+
+        /// <summary>
+        /// 
+        /// </summary>
         protected readonly int NumberOfSignificantFigures = 15;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="arguments">Arguments to the function, each argument can contain primitive types, lists or <see cref="ExcelDataProvider.IRangeInfo">Excel ranges</see></param>
+        /// <param name="arguments">Arguments to the function, each argument can contain primitive types, lists or <see cref="IRangeInfo">Excel ranges</see></param>
         /// <param name="context">The <see cref="ParsingContext"/> contains various data that can be useful in functions.</param>
         /// <returns>A <see cref="CompileResult"/> containing the calculated value</returns>
         public abstract CompileResult Execute(IEnumerable<FunctionArgument> arguments, ParsingContext context);
@@ -67,7 +79,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
         /// </summary>
         /// <param name="context"></param>
         public virtual void BeforeInvoke(ParsingContext context) { }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual bool IsLookupFuction 
         { 
             get 
@@ -75,7 +89,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
                 return false; 
             } 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual bool IsErrorHandlingFunction
         {
             get
@@ -139,7 +155,7 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
         /// <summary>
         /// This functions validates that the supplied <paramref name="arguments"/> contains at least
         /// (the value of) <paramref name="minLength"/> elements. If one of the arguments is an
-        /// <see cref="ExcelDataProvider.IRangeInfo">Excel range</see> the number of cells in
+        /// <see cref="IRangeInfo">Excel range</see> the number of cells in
         /// that range will be counted as well.
         /// </summary>
         /// <param name="arguments"></param>
@@ -167,11 +183,23 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
                     return true;
                 }, "Expecting at least {0} arguments", minLength.ToString());
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="arguments"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         protected string ArgToAddress(IEnumerable<FunctionArgument> arguments, int index)
         {            
             return arguments.ElementAt(index).IsExcelRange ? arguments.ElementAt(index).ValueAsRangeInfo.Address.FullAddress : ArgToString(arguments, index);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="arguments"></param>
+        /// <param name="index"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
         protected string ArgToAddress(IEnumerable<FunctionArgument> arguments, int index, ParsingContext context)
         {
             var arg = arguments.ElementAt(index);
@@ -327,7 +355,13 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
         {
             return arguments.ElementAt(index).Value as IRangeInfo;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        /// <exception cref="ExcelErrorValueException"></exception>
         protected double Divide(double left, double right)
         {
             if (System.Math.Abs(right - 0d) < double.Epsilon)
@@ -336,13 +370,21 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
             }
             return left/right;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         protected bool IsNumericString(object value)
         {
             if (value == null || string.IsNullOrEmpty(value.ToString())) return false;
             return Regex.IsMatch(value.ToString(), @"^[\d]+(\,[\d])?");
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
         protected bool IsInteger(object n)
         {
             if (!IsNumeric(n)) return false;
@@ -419,18 +461,31 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
                 throw new ExcelErrorValueException("An excel function error occurred", ExcelErrorValue.Create(errorType));
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
         protected bool IsNumeric(object val)
         {
             if (val == null) return false;
             return (TypeCompat.IsPrimitive(val) || val is double || val is decimal  || val is System.DateTime || val is TimeSpan);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
         protected bool IsBool(object val)
         {
             return val is bool;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="allowNullOrEmpty"></param>
+        /// <returns></returns>
         protected bool IsString(object val, bool allowNullOrEmpty = true)
         {
             if (!allowNullOrEmpty)
@@ -519,7 +574,13 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
         {
             return ArgsToDoubleEnumerable(ignoreHiddenCells, true, arguments, context, false);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ignoreHiddenCells"></param>
+        /// <param name="rangeInfo"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
         protected virtual IEnumerable<double> ArgsToDoubleEnumerableZeroPadded(bool ignoreHiddenCells, IRangeInfo rangeInfo, ParsingContext context)
         {
             var startRow = rangeInfo.Address.Start.Row;
@@ -572,7 +633,11 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
             validator.Validate(result);
             return new CompileResult(result, dataType);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="errorType"></param>
+        /// <returns></returns>
         protected CompileResult CreateResult(eErrorType errorType)
         {
             return CreateResult(ExcelErrorValue.Create(errorType), DataType.ExcelError);
@@ -618,7 +683,11 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
                 throw (new ExcelErrorValueException(ExcelErrorValue.Parse(cell.Value.ToString())));
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
         protected CompileResult GetResultByObject(object result)
         {
             if (IsNumeric(result))

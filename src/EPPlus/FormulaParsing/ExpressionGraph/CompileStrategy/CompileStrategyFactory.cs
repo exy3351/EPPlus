@@ -18,8 +18,16 @@ using OfficeOpenXml.FormulaParsing.Excel.Operators;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.CompileStrategy
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CompileStrategyFactory : ICompileStrategyFactory
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         public CompileStrategy Create(Expression expression)
         {
             if (expression.Operator.Operator == Operators.Concat)

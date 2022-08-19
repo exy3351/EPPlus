@@ -17,14 +17,23 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class AtomicExpression : Expression
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
         public AtomicExpression(string expression)
             : base(expression)
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override bool IsGroupedExpression
         {
             get { return false; }

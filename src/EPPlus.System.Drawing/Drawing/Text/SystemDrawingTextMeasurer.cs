@@ -4,8 +4,14 @@ using System.Drawing;
 
 namespace OfficeOpenXml.SystemDrawing.Text
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SystemDrawingTextMeasurer : ITextMeasurer
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public SystemDrawingTextMeasurer()
         {
             _stringFormat = StringFormat.GenericDefault;
@@ -28,6 +34,12 @@ namespace OfficeOpenXml.SystemDrawing.Text
                     return FontStyle.Regular;
             }
         }        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="font"></param>
+        /// <returns></returns>
         public TextMeasurement MeasureText(string text, MeasurementFont font)
         {
             Bitmap b;
@@ -52,6 +64,10 @@ namespace OfficeOpenXml.SystemDrawing.Text
             return new TextMeasurement(size.Width * dpiCorrectX, size.Height * dpiCorrectY);
         }
         bool? _validForEnvironment=null;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool ValidForEnvironment()
         {
             if(_validForEnvironment.HasValue==false)

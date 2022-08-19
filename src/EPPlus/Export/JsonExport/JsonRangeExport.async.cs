@@ -1,6 +1,5 @@
 ﻿using OfficeOpenXml.Export.HtmlExport;
 using System.IO;
-#if !NET35 && !NET40
 using System.Threading.Tasks;
 
 namespace OfficeOpenXml
@@ -51,4 +50,3 @@ namespace OfficeOpenXml
         }
     }
 }
-#endif

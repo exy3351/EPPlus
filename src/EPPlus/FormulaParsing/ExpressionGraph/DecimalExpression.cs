@@ -14,29 +14,42 @@ using System.Globalization;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DecimalExpression : AtomicExpression
     {
         private double? _compiledValue;
         private bool _negate;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
         public DecimalExpression(string expression)
             : this(expression, false)
         {
             
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <param name="negate"></param>
         public DecimalExpression(string expression, bool negate)
             : base(expression)
         {
             _negate = negate;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="compiledValue"></param>
         public DecimalExpression(double compiledValue)
             : base(compiledValue.ToString(CultureInfo.InvariantCulture))
         {
             _compiledValue = compiledValue;
         }
-
+        /// <inheritdoc/>
         public override CompileResult Compile()
         {
             double result = _compiledValue ?? double.Parse(ExpressionString, CultureInfo.InvariantCulture);

@@ -42,7 +42,7 @@ namespace OfficeOpenXml
         /// </summary>
         Right
     }
-    #region class ExcelHeaderFooterText
+
 	/// <summary>
     /// Print header and footer 
     /// </summary>
@@ -135,22 +135,7 @@ namespace OfficeOpenXml
 
             return AddImage(id, ii);
         }
-#if NETFULL
-        /// <summary>
-        /// Inserts a picture at the end of the text in the header or footer
-        /// </summary>
-        /// <param name="Picture">The image object containing the Picture</param>
-        /// <param name="Alignment">Alignment. The image object will be inserted at the end of the Text.</param>
-        [Obsolete("This method is deprecated and is removed .NET standard/core. Please use overloads not referencing System.Drawing.Image")]
-        public ExcelVmlDrawingPicture InsertPicture(Image Picture, PictureAlignment Alignment)
-        {
-            var b = ImageUtils.GetImageAsByteArray(Picture, out ePictureType type);
-            using (var ms = new MemoryStream(b))
-            {
-                return InsertPicture(ms, type, Alignment);
-            }
-        }
-#endif
+
         private ExcelVmlDrawingPicture AddImage(string id, ImageInfo ii)
         {
             
@@ -185,15 +170,13 @@ namespace OfficeOpenXml
             return id;
         }
 	}
-#endregion
 
-#region ExcelHeaderFooter
 	/// <summary>
 	/// Represents the Header and Footer on an Excel Worksheet
 	/// </summary>
 	public sealed class ExcelHeaderFooter : XmlHelper
 	{
-#region Static Properties
+
 		/// <summary>
         /// The code for "current page #"
 		/// </summary>
@@ -240,9 +223,7 @@ namespace OfficeOpenXml
         /// The code for "shadow style"
         /// </summary>
         public const string ShadowStyle = @"&H";
-#endregion
 
-#region ExcelHeaderFooter Private Properties
 		internal ExcelHeaderFooterText _oddHeader;
         internal ExcelHeaderFooterText _oddFooter;
 		internal ExcelHeaderFooterText _evenHeader;
@@ -250,9 +231,7 @@ namespace OfficeOpenXml
         internal ExcelHeaderFooterText _firstHeader;
         internal ExcelHeaderFooterText _firstFooter;
         private ExcelWorksheet _ws;
-#endregion
 
-#region ExcelHeaderFooter Constructor
 		/// <summary>
 		/// ExcelHeaderFooter Constructor
 		/// </summary>
@@ -265,9 +244,7 @@ namespace OfficeOpenXml
             _ws = ws;
             SchemaNodeOrder = new string[] { "headerFooter", "oddHeader", "oddFooter", "evenHeader", "evenFooter", "firstHeader", "firstFooter" };
 		}
-#endregion
 
-#region alignWithMargins
         const string alignWithMarginsPath="@alignWithMargins";
         /// <summary>
 		/// Align with page margins
@@ -283,9 +260,7 @@ namespace OfficeOpenXml
                 SetXmlNodeString(alignWithMarginsPath, value ? "1" : "0");
 			}
 		}
-#endregion
 
-#region differentOddEven
         const string differentOddEvenPath = "@differentOddEven";
         /// <summary>
 		/// Displas different headers and footers on odd and even pages.
@@ -301,9 +276,7 @@ namespace OfficeOpenXml
                 SetXmlNodeString(differentOddEvenPath, value ? "1" : "0");
 			}
 		}
-#endregion
 
-#region differentFirst
         const string differentFirstPath = "@differentFirst";
 
 		/// <summary>
@@ -320,8 +293,7 @@ namespace OfficeOpenXml
                 SetXmlNodeString(differentFirstPath, value ? "1" : "0");
 			}
 		}
-#endregion
-#region ScaleWithDoc
+
         const string scaleWithDocPath = "@scaleWithDoc";
         /// <summary>
         /// The header and footer should scale as you use the ShrinkToFit property on the document
@@ -337,8 +309,7 @@ namespace OfficeOpenXml
                 SetXmlNodeBool(scaleWithDocPath, value);
             }
         }
-#endregion
-#region ExcelHeaderFooter Public Properties
+
         /// <summary>
         /// Provides access to the header on odd numbered pages of the document.
         /// If you want the same header on both odd and even pages, then only set values in this ExcelHeaderFooterText class.
@@ -460,8 +431,6 @@ namespace OfficeOpenXml
             }
         }
 
-#endregion
-#region Save  //  ExcelHeaderFooter
             /// <summary>
             /// Saves the header and footer information to the worksheet XML
             /// </summary>
@@ -558,7 +527,7 @@ namespace OfficeOpenXml
 				ret += "&R" + headerFooter.RightAlignedText;
 			return ret;
 		}
-#endregion
+
 	}
-#endregion
+
 }

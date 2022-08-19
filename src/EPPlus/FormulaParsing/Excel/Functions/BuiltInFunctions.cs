@@ -29,6 +29,9 @@ using OfficeOpenXml.FormulaParsing.Excel.Functions.Statistical;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BuiltInFunctions : FunctionsModule
     {
         /// <summary>

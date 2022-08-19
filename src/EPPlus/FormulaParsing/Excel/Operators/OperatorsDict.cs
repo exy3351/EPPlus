@@ -17,8 +17,14 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Operators
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class OperatorsDict : Dictionary<string, IOperator>
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public OperatorsDict()
         {
             Add("+", Operator.Plus);
@@ -36,7 +42,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         }
 
         private static IDictionary<string, IOperator> _instance;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static IDictionary<string, IOperator> Instance
         {
             get 

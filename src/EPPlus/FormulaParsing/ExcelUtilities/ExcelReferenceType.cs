@@ -17,11 +17,26 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum ExcelReferenceType
     {
+        /// <summary>
+        /// 
+        /// </summary>
         AbsoluteRowAndColumn = 1,
+        /// <summary>
+        /// 
+        /// </summary>
         AbsoluteRowRelativeColumn = 2,
+        /// <summary>
+        /// 
+        /// </summary>
         RelativeRowAbsolutColumn = 3,
+        /// <summary>
+        /// 
+        /// </summary>
         RelativeRowAndColumn = 4
     }
 }

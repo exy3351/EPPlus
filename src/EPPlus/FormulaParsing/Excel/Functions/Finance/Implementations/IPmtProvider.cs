@@ -13,8 +13,20 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Finance.Implementations
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IPmtProvider
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Rate"></param>
+        /// <param name="NPer"></param>
+        /// <param name="PV"></param>
+        /// <param name="FV"></param>
+        /// <param name="Due"></param>
+        /// <returns></returns>
         double GetPmt(double Rate, double NPer, double PV, double FV = 0, PmtDue Due = PmtDue.EndOfPeriod);
     }
 }

@@ -17,22 +17,32 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BooleanExpression : AtomicExpression
     {
         private bool? _precompiledValue;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
         public BooleanExpression(string expression)
             : base(expression)
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
         public BooleanExpression(bool value)
             : base(value ? "true" : "false")
         {
             _precompiledValue = value;
         }
-
+        /// <inheritdoc/>
         public override CompileResult Compile()
         {
             var result = _precompiledValue ?? bool.Parse(ExpressionString);

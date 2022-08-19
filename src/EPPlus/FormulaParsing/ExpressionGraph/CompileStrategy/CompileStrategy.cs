@@ -17,15 +17,27 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.CompileStrategy
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class CompileStrategy
     {
+        /// <summary>
+        /// 
+        /// </summary>
         protected readonly Expression _expression;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
         public CompileStrategy(Expression expression)
         {
             _expression = expression;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public abstract Expression Compile();
     }
 }

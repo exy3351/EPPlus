@@ -18,13 +18,34 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface INameInfo
     {
+        /// <summary>
+        /// 
+        /// </summary>
         ulong Id { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         string Worksheet { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         string Name { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         string Formula { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         IList<Token> Tokens { get; }
+        /// <summary>
+        /// 
+        /// </summary>
         object Value { get; set; }
     }
 }

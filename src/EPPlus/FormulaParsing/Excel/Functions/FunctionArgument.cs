@@ -19,14 +19,25 @@ using OfficeOpenXml.FormulaParsing.ExpressionGraph;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class FunctionArgument
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="val"></param>
         public FunctionArgument(object val)
         {
             Value = val;
             DataType = DataType.Unknown;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="dataType"></param>
         public FunctionArgument(object val, DataType dataType)
             :this(val)
         {
@@ -34,57 +45,87 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
         }
 
         private ExcelCellState _excelCellState;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="state"></param>
         public void SetExcelStateFlag(ExcelCellState state)
         {
             _excelCellState |= state;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="state"></param>
+        /// <returns></returns>
         public bool ExcelStateFlagIsSet(ExcelCellState state)
         {
             return (_excelCellState & state) != 0;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public object Value { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public DataType DataType { get; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Type Type
         {
             get { return Value != null ? Value.GetType() : null; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int ExcelAddressReferenceId { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsExcelRange
         {
             get { return Value != null && Value is IRangeInfo; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsEnumerableOfFuncArgs
         {
             get { return Value != null && Value is IEnumerable<FunctionArgument>; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public IEnumerable<FunctionArgument> ValueAsEnumerableOfFuncArgs
         {
             get { return Value as IEnumerable<FunctionArgument>; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool ValueIsExcelError
         {
             get { return ExcelErrorValue.Values.IsErrorValue(Value); }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ExcelErrorValue ValueAsExcelErrorValue
         {
             get { return ExcelErrorValue.Parse(Value.ToString()); }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public IRangeInfo ValueAsRangeInfo
         {
             get { return Value as IRangeInfo; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public object ValueFirst
         {
             get
@@ -104,7 +145,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
                 }
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string ValueFirstString
         {
             get

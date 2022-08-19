@@ -16,9 +16,18 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Finance.Implementations
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum PmtDue
     {
+        /// <summary>
+        /// 
+        /// </summary>
         EndOfPeriod = 0,
+        /// <summary>
+        /// 
+        /// </summary>
         BeginningOfPeriod = 1
     }
 }

@@ -21,6 +21,9 @@ using OfficeOpenXml.FormulaParsing;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Operators
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Operator : IOperator
     {
         private const int PrecedencePercent = 2;
@@ -54,7 +57,12 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         {
             get { return _operator; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public CompileResult Apply(CompileResult left, CompileResult right)
         {
             if (left.Result is ExcelErrorValue)
@@ -67,7 +75,7 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
             }
             return _implementation(left, right);
         }
-
+        /// <inheritdoc/>
         public override string ToString()
         {
             return "Operator: " + _operator;
@@ -80,6 +88,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         }
 
         private static IOperator _plus;
+       /// <summary>
+       /// 
+       /// </summary>
         public static IOperator Plus
         {
             get
@@ -107,6 +118,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         }
 
         private static IOperator _minus;
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator Minus
         {
             get
@@ -130,6 +144,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         }
 
         private static IOperator _multiply;
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator Multiply
         {
             get
@@ -152,6 +169,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         }
 
         private static IOperator _divide;
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator Divide
         {
             get
@@ -177,7 +197,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
                 }));
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator Exp
         {
             get
@@ -210,7 +232,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
             }
             return c.ResultValue.ToString();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator Concat
         {
             get
@@ -227,6 +251,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         }
 
         private static IOperator _greaterThan;
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator GreaterThan
         {
             get
@@ -239,6 +266,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         }
 
         private static IOperator _eq;
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator Eq
         {
             get
@@ -251,6 +281,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         }
 
         private static IOperator _notEqualsTo;
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator NotEqualsTo
         {
             get
@@ -263,6 +296,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         }
 
         private static IOperator _greaterThanOrEqual;
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator GreaterThanOrEqual
         {
             get
@@ -275,6 +311,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         }
 
         private static IOperator _lessThan;
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator LessThan
         {
             get
@@ -285,7 +324,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
                                (l, r) => Compare(l, r, (compRes) => compRes < 0)));
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator LessThanOrEqual
         {
             get
@@ -296,6 +337,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Operators
         }
 
         private static IOperator _percent;
+        /// <summary>
+        /// 
+        /// </summary>
         public static IOperator Percent
         {
             get

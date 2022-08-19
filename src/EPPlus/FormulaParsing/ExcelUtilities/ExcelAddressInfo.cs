@@ -45,7 +45,11 @@ namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
             }
             AddressOnSheet = addressOnSheet;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
         public static ExcelAddressInfo Parse(string address)
         {
             Require.That(address).Named("address").IsNotNullOrEmpty();

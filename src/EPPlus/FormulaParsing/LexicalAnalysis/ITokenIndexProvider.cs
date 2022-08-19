@@ -17,10 +17,18 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface ITokenIndexProvider
     {
+        /// <summary>
+        /// 
+        /// </summary>
         int Index { get;  }
-
+        /// <summary>
+        /// 
+        /// </summary>
         void MoveIndexPointerForward();
     }
 }

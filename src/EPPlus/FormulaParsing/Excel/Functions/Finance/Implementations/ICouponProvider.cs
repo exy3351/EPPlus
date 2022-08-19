@@ -14,18 +14,64 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Finance.Implementations
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface ICouponProvider
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="settlement"></param>
+        /// <param name="maturity"></param>
+        /// <param name="frequency"></param>
+        /// <param name="basis"></param>
+        /// <returns></returns>
         double GetCoupdaybs(System.DateTime settlement, System.DateTime maturity, int frequency, DayCountBasis basis);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="settlement"></param>
+        /// <param name="maturity"></param>
+        /// <param name="frequency"></param>
+        /// <param name="basis"></param>
+        /// <returns></returns>
         double GetCoupdays(System.DateTime settlement, System.DateTime maturity, int frequency, DayCountBasis basis);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="settlement"></param>
+        /// <param name="maturity"></param>
+        /// <param name="frequency"></param>
+        /// <param name="basis"></param>
+        /// <returns></returns>
         double GetCoupdaysnc(System.DateTime settlement, System.DateTime maturity, int frequency, DayCountBasis basis);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="settlement"></param>
+        /// <param name="maturity"></param>
+        /// <param name="frequency"></param>
+        /// <param name="basis"></param>
+        /// <returns></returns>
         System.DateTime GetCoupsncd(System.DateTime settlement, System.DateTime maturity, int frequency, DayCountBasis basis);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="settlement"></param>
+        /// <param name="maturity"></param>
+        /// <param name="frequency"></param>
+        /// <param name="basis"></param>
+        /// <returns></returns>
         double GetCoupnum(System.DateTime settlement, System.DateTime maturity, int frequency, DayCountBasis basis);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="settlement"></param>
+        /// <param name="maturity"></param>
+        /// <param name="frequency"></param>
+        /// <param name="basis"></param>
+        /// <returns></returns>
         System.DateTime GetCouppcd(System.DateTime settlement, System.DateTime maturity, int frequency, DayCountBasis basis);
     }
 }

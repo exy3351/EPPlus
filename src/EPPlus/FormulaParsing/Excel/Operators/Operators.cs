@@ -17,23 +17,74 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Operators
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum Operators
     {
+        /// <summary>
+        /// 
+        /// </summary>
         Undefined,
+        /// <summary>
+        /// 
+        /// </summary>
         Concat,
+        /// <summary>
+        /// 
+        /// </summary>
         Plus,
+        /// <summary>
+        /// 
+        /// </summary>
         Minus,
+        /// <summary>
+        /// 
+        /// </summary>
         Multiply,
+        /// <summary>
+        /// 
+        /// </summary>
         Divide,
+        /// <summary>
+        /// 
+        /// </summary>
         Modulus,
+        /// <summary>
+        /// 
+        /// </summary>
         Percent,
+        /// <summary>
+        /// 
+        /// </summary>
         Equals,
+        /// <summary>
+        /// 
+        /// </summary>
         GreaterThan,
+        /// <summary>
+        /// 
+        /// </summary>
         GreaterThanOrEqual,
+        /// <summary>
+        /// 
+        /// </summary>
         LessThan,
+        /// <summary>
+        /// 
+        /// </summary>
         LessThanOrEqual,
+        /// <summary>
+        /// 
+        /// </summary>
         NotEqualTo,
+        /// <summary>
+        /// 
+        /// </summary>
         IntegerDivision,
+        /// <summary>
+        /// 
+        /// </summary>
         Exponentiation
     }
 }

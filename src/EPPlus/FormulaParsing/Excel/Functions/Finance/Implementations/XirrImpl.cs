@@ -17,9 +17,18 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Finance.Implementations
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class XirrImpl
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="aValues"></param>
+        /// <param name="aDates"></param>
+        /// <param name="rGuessRate"></param>
+        /// <returns></returns>
         public static FinanceCalcResult<double> GetXirr(IEnumerable<double> aValues, IEnumerable<System.DateTime> aDates, double rGuessRate = 0.1)
         {
             if (aValues.Count() != aDates.Count()) return new FinanceCalcResult<double>(eErrorType.Value);
@@ -69,6 +78,13 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Finance.Implementations
             return new FinanceCalcResult<double>(fResultRate);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rValues"></param>
+        /// <param name="rDates"></param>
+        /// <param name="fRate"></param>
+        /// <returns></returns>
         static double lcl_sca_XirrResult_Deriv1(IEnumerable<double> rValues, IEnumerable<System.DateTime> rDates, double fRate)
         {
             /*  V_0 ... V_n = input values.
@@ -96,7 +112,13 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Finance.Implementations
             }
             return fResult;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rValues"></param>
+        /// <param name="rDates"></param>
+        /// <param name="fRate"></param>
+        /// <returns></returns>
         static double lcl_sca_XirrResult(IEnumerable<double> rValues, IEnumerable<System.DateTime> rDates, double fRate)
         {
             /*  V_0 ... V_n = input values.

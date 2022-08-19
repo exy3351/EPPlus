@@ -17,24 +17,36 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ConstantExpressions
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static Expression Percent
         {
             get { return new ConstantExpression("Percent", () => new CompileResult(0.01, DataType.Decimal)); }
         }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class ConstantExpression : AtomicExpression
     {
         private readonly Func<CompileResult> _factoryMethod;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="factoryMethod"></param>
         public ConstantExpression(string title, Func<CompileResult> factoryMethod)
             : base(title)
         {
             _factoryMethod = factoryMethod;
         }
-
+        /// <inheritdoc/>
         public override CompileResult Compile()
         {
             return _factoryMethod();

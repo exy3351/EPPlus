@@ -17,12 +17,24 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Database
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ExcelDatabaseField
     {
-        
+        /// <summary>
+        /// 
+        /// </summary>
         public string FieldName { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public int ColIndex { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <param name="colIndex"></param>
         public ExcelDatabaseField(string fieldName, int colIndex)
         {
             FieldName = fieldName;

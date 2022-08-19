@@ -19,18 +19,28 @@ using OfficeOpenXml.FormulaParsing;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime.Workdays
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class HolidayWeekdays
     {
         private readonly List<DayOfWeek> _holidayDays = new List<DayOfWeek>();
-
+        /// <summary>
+        /// 
+        /// </summary>
         public HolidayWeekdays()
             :this(DayOfWeek.Saturday, DayOfWeek.Sunday)
         {
             
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int NumberOfWorkdaysPerWeek => 7 - _holidayDays.Count;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="holidayDays"></param>
         public HolidayWeekdays(params DayOfWeek[] holidayDays)
         {
             foreach (var dayOfWeek in holidayDays)
@@ -38,12 +48,21 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime.Workdays
                 _holidayDays.Add(dayOfWeek);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
         public bool IsHolidayWeekday(System.DateTime dateTime)
         {
             return _holidayDays.Contains(dateTime.DayOfWeek);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="resultDate"></param>
+        /// <param name="arguments"></param>
+        /// <returns></returns>
         public System.DateTime AdjustResultWithHolidays(System.DateTime resultDate,
                                                          IEnumerable<FunctionArgument> arguments)
         {
@@ -85,7 +104,12 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime.Workdays
             }
             return resultDate;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="direction"></param>
+        /// <returns></returns>
         public System.DateTime GetNextWorkday(System.DateTime date, WorkdayCalculationDirection direction = WorkdayCalculationDirection.Forward)
         {
             var changeParam = (int)direction;

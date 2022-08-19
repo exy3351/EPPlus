@@ -18,14 +18,23 @@ using OfficeOpenXml.FormulaParsing.Exceptions;
 
 namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class FormulaDependencies
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public FormulaDependencies()
             : this(new FormulaDependencyFactory())
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="formulaDependencyFactory"></param>
         public FormulaDependencies(FormulaDependencyFactory formulaDependencyFactory)
         {
             _formulaDependencyFactory = formulaDependencyFactory;
@@ -33,9 +42,14 @@ namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
 
         private readonly FormulaDependencyFactory _formulaDependencyFactory;
         private readonly Dictionary<string, FormulaDependency> _dependencies = new Dictionary<string, FormulaDependency>();
-
+        /// <summary>
+        /// 
+        /// </summary>
         public IEnumerable<KeyValuePair<string, FormulaDependency>> Dependencies { get { return _dependencies; } }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parsingScope"></param>
         public void AddFormulaScope(ParsingScope parsingScope)
         {
             //var dependency = _formulaDependencyFactory.Create(parsingScope);
@@ -55,7 +69,9 @@ namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
             //    }
             //}
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void Clear()
         {
             _dependencies.Clear();

@@ -18,6 +18,9 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [FunctionMetadata(
         Category = ExcelFunctionCategory.DateAndTime,
         EPPlusVersion = "4",
@@ -25,6 +28,7 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime
         IntroducedInExcelVersion = "2013")]
     public class Days : ExcelFunction
     {
+        /// <inheritdoc/>
         public override CompileResult Execute(IEnumerable<FunctionArgument> arguments, ParsingContext context)
         {
             ValidateArguments(arguments, 2);

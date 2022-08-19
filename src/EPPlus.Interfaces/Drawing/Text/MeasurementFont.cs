@@ -13,12 +13,22 @@
 
 namespace OfficeOpenXml.Interfaces.Drawing.Text
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MeasurementFont
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public string FontFamily { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public MeasurementFontStyles Style { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public float Size { get; set; }
     }
 }

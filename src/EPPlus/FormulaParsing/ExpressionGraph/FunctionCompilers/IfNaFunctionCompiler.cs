@@ -19,14 +19,22 @@ using OfficeOpenXml.FormulaParsing.Exceptions;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class IfNaFunctionCompiler : FunctionCompiler
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="context"></param>
         public IfNaFunctionCompiler(ExcelFunction function, ParsingContext context)
             :base(function, context)
         {
             
         }
-
+        /// <inheritdoc/>
         public override CompileResult Compile(IEnumerable<Expression> children)
         {
             if (children.Count() != 2) return new CompileResult(eErrorType.Value);

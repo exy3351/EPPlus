@@ -19,29 +19,50 @@ using OfficeOpenXml.FormulaParsing.ExpressionGraph.CompileStrategy;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ExpressionCompiler : IExpressionCompiler
     {
         private IEnumerable<Expression> _expressions;
         private IExpressionConverter _expressionConverter;
         private ICompileStrategyFactory _compileStrategyFactory;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ExpressionCompiler()
             : this(new ExpressionConverter(), new CompileStrategyFactory())
         {
  
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expressionConverter"></param>
+        /// <param name="compileStrategyFactory"></param>
         public ExpressionCompiler(IExpressionConverter expressionConverter, ICompileStrategyFactory compileStrategyFactory)
         {
             _expressionConverter = expressionConverter;
             _compileStrategyFactory = compileStrategyFactory;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expressions"></param>
+        /// <returns></returns>
         public CompileResult Compile(IEnumerable<Expression> expressions)
         {
             _expressions = expressions;
             return PerformCompilation();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="worksheet"></param>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <param name="expressions"></param>
+        /// <returns></returns>
         public CompileResult Compile(string worksheet, int row, int column, IEnumerable<Expression> expressions)
         {
             _expressions = expressions;

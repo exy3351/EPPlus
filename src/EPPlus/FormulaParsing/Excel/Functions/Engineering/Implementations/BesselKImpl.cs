@@ -14,8 +14,16 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Engineering.Implementations
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BesselKImpl : BesselBase
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fNum"></param>
+        /// <returns></returns>
         static FinanceCalcResult<double> Besselk0(double fNum)
         {
             double fRet;
@@ -74,6 +82,12 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Engineering.Implementatio
             return new FinanceCalcResult<double>(fRet);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fNum"></param>
+        /// <param name="nOrder"></param>
+        /// <returns></returns>
         public FinanceCalcResult<double> BesselK(double fNum, int nOrder)
         {
             switch (nOrder)

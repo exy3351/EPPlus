@@ -8,9 +8,19 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Logical
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class IfsWithMultipleMatchesBase : ExcelFunction
     {
         private readonly ExpressionEvaluator _evaluator = new ExpressionEvaluator();
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="functionName"></param>
+       /// <param name="arguments"></param>
+       /// <param name="errorResult"></param>
+       /// <returns></returns>
         protected IEnumerable<double> GetMatches(string functionName, IEnumerable<FunctionArgument> arguments, out CompileResult errorResult)
         {
             ValidateArguments(arguments, 3);

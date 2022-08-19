@@ -21,23 +21,41 @@ using OfficeOpenXml.FormulaParsing.LexicalAnalysis.PostProcessing;
 
 namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SourceCodeTokenizer : ISourceCodeTokenizer
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static ISourceCodeTokenizer Default
         {
             get { return new SourceCodeTokenizer(FunctionNameProvider.Empty, NameValueProvider.Empty, false); }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public static ISourceCodeTokenizer R1C1
         {
             get { return new SourceCodeTokenizer(FunctionNameProvider.Empty, NameValueProvider.Empty, true); }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="functionRepository"></param>
+        /// <param name="nameValueProvider"></param>
+        /// <param name="r1c1"></param>
         public SourceCodeTokenizer(IFunctionNameProvider functionRepository, INameValueProvider nameValueProvider, bool r1c1 = false)
             : this(new TokenFactory(functionRepository, nameValueProvider, r1c1))
         {
             _nameValueProvider = nameValueProvider;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tokenFactory"></param>
         public SourceCodeTokenizer(ITokenFactory tokenFactory)
         {
             _tokenFactory = tokenFactory;
@@ -45,11 +63,21 @@ namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
 
         private readonly ITokenFactory _tokenFactory;
         private readonly INameValueProvider _nameValueProvider;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public IEnumerable<Token> Tokenize(string input)
         {
             return Tokenize(input, null);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="worksheet"></param>
+        /// <returns></returns>
         public IEnumerable<Token> Tokenize(string input, string worksheet)
         {
             if (string.IsNullOrEmpty(input))

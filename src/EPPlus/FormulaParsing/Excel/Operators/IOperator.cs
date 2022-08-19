@@ -18,12 +18,25 @@ using OfficeOpenXml.FormulaParsing.ExpressionGraph;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Operators
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IOperator
     {
+        /// <summary>
+        /// 
+        /// </summary>
         Operators Operator { get; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         CompileResult Apply(CompileResult left, CompileResult right);
-
+        /// <summary>
+        /// 
+        /// </summary>
         int Precedence { get; }
     }
 }

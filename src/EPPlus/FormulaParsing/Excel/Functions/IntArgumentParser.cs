@@ -20,13 +20,17 @@ using OfficeOpenXml.FormulaParsing.Exceptions;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class IntArgumentParser : ArgumentParser
     {
+        /// <inheritdoc/>
         public override object Parse(object obj)
         {
             return Parse(obj, RoundingMethod.Convert);
         }
-
+        /// <inheritdoc/>
         public override object Parse(object obj, RoundingMethod roundingMethod)
         {
             Require.That(obj).Named("argument").IsNotNull();

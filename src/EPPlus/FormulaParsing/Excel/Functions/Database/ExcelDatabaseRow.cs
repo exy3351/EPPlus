@@ -18,11 +18,19 @@ using OfficeOpenXml.FormulaParsing.Excel.Operators;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Database
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ExcelDatabaseRow
     {
         private Dictionary<int, string> _fieldIndexes = new Dictionary<int, string>();
         private readonly Dictionary<string, object> _items = new Dictionary<string, object>();
         private int _colIndex = 1;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="field"></param>
+        /// <returns></returns>
         public object this[string field]
         {
             get { return _items[field]; }
@@ -33,7 +41,11 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Database
                 _fieldIndexes[_colIndex++] = field;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public object this[int index]
         {
             get

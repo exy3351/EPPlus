@@ -17,10 +17,32 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface ITokenFactory
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tokens"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         Token Create(IEnumerable<Token> tokens, string token);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tokens"></param>
+        /// <param name="token"></param>
+        /// <param name="worksheet"></param>
+        /// <returns></returns>
         Token Create(IEnumerable<Token> tokens, string token, string worksheet);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="explicitTokenType"></param>
+        /// <returns></returns>
         Token Create(string token, TokenType explicitTokenType);
     }
 }

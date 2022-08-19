@@ -142,12 +142,22 @@ namespace OfficeOpenXml
                 return _values[val];
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="errorType"></param>
+        /// <returns></returns>
         public static ExcelErrorValue Create(eErrorType errorType)
         {
             return new ExcelErrorValue(errorType);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
         public static ExcelErrorValue Parse(string val)
         {
             if (Values.StringIsErrorValue(val))

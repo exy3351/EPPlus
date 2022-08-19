@@ -22,8 +22,12 @@ using util=OfficeOpenXml.Utils;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DoubleArgumentParser : ArgumentParser
     {
+        /// <inheritdoc/>
         public override object Parse(object obj)
         {
             Require.That(obj).Named("argument").IsNotNull();
@@ -48,7 +52,7 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
                 throw new ExcelErrorValueException(ExcelErrorValue.Create(eErrorType.Value));
             }
         }
-
+        /// <inheritdoc/>
         public override object Parse(object obj, RoundingMethod roundingMethod)
         {
             return Parse(obj);

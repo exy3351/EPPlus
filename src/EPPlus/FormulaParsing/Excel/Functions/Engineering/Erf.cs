@@ -20,12 +20,16 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Engineering
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [FunctionMetadata(
         Category = ExcelFunctionCategory.Engineering,
         EPPlusVersion = "5.2",
         Description = "Returns the error function integrated between two supplied limits")]
     public class Erf : ExcelFunction
     {
+        /// <inheritdoc/>
         public override CompileResult Execute(IEnumerable<FunctionArgument> arguments, ParsingContext context)
         {
             ValidateArguments(arguments, 1);

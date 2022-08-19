@@ -17,14 +17,21 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.CompileStrategy
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class StringConcatStrategy : CompileStrategy
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
         public StringConcatStrategy(Expression expression)
             : base(expression)
         {
            
         }
-
+        /// <inheritdoc/>
         public override Expression Compile()
         {
             var newExp = _expression is ExcelAddressExpression ? _expression : ExpressionConverter.Instance.ToStringExpression(_expression);

@@ -30,13 +30,19 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
     /// </summary>
     public class IfFunctionCompiler : FunctionCompiler
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="context"></param>
+        /// <exception cref="ArgumentException"></exception>
         public IfFunctionCompiler(ExcelFunction function, ParsingContext context)
             : base(function, context)
         {
             Require.That(function).Named("function").IsNotNull();
             if (!(function is If)) throw new ArgumentException("function must be of type If");
         }
-
+        /// <inheritdoc/>
         public override CompileResult Compile(IEnumerable<Expression> children)
         {
             // 2 is allowed, Excel returns FALSE if false is the outcome of the expression

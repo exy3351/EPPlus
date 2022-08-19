@@ -17,8 +17,16 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class FormulaDependencyFactory
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scope"></param>
+        /// <returns></returns>
         public virtual FormulaDependency Create(ParsingScope scope)
         {
             return new FormulaDependency(scope);

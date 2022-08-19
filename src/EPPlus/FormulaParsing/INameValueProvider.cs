@@ -17,14 +17,34 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface INameValueProvider
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="worksheet"></param>
+        /// <returns></returns>
         bool IsNamedValue(string key, string worksheet);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         object GetNamedValue(string key);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="worksheet"></param>
+        /// <returns></returns>
         object GetNamedValue(string key, string worksheet);
-
+        /// <summary>
+        /// 
+        /// </summary>
         void Reload();
     }
 }

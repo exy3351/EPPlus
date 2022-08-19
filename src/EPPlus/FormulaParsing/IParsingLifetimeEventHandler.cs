@@ -17,8 +17,14 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IParsingLifetimeEventHandler
     {
+        /// <summary>
+        /// 
+        /// </summary>
         void ParsingCompleted();
     }
 }

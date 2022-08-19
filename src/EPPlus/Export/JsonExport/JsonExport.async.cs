@@ -3,7 +3,6 @@ using OfficeOpenXml.Utils;
 using System;
 using System.IO;
 using System.Text;
-#if !NET35 && !NET40
 using System.Threading.Tasks;
 namespace OfficeOpenXml
 {
@@ -120,4 +119,3 @@ namespace OfficeOpenXml
         }
     }
 }
-#endif

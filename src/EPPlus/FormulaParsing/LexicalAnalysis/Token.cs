@@ -107,12 +107,19 @@ namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
         {
             return (_tokenType & tokenType) == tokenType;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="otherToken"></param>
+        /// <returns></returns>
         public bool AreEqualTo(Token otherToken)
         {
             return (GetTokenTypeFlags() == otherToken.GetTokenTypeFlags() && Value == otherToken.Value);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         internal TokenType GetTokenTypeFlags()
         {
             return _tokenType;

@@ -19,8 +19,18 @@ using OfficeOpenXml.FormulaParsing;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ObjectEnumerableArgConverter : CollectionFlattener<object>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ignoreHidden"></param>
+        /// <param name="arguments"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public virtual IEnumerable<object> ConvertArgs(bool ignoreHidden, IEnumerable<FunctionArgument> arguments, ParsingContext context)
         {
             return base.FuncArgsToFlatEnumerable(arguments, (arg, argList) =>

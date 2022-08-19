@@ -10,7 +10,7 @@
  *************************************************************************************************
   01/27/2020         EPPlus Software AB       Initial release EPPlus 5
  *************************************************************************************************/
-#if (Core)
+#if NET
 using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
@@ -26,11 +26,14 @@ namespace OfficeOpenXml.FormulaParsing
     /// </summary>
     public class ExcelCalculationOption
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public ExcelCalculationOption()
         {
             AllowCircularReferences = false;
             PrecisionAndRoundingStrategy = PrecisionAndRoundingStrategy.DotNet;
-#if (Core)
+#if NET
             var build = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", true, false);

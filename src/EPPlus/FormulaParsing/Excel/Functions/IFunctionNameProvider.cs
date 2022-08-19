@@ -17,8 +17,16 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IFunctionNameProvider
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         bool IsFunctionName(string name);
     }
 }

@@ -21,6 +21,10 @@ namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis.PostProcessing
     /// </summary>
     public class TokenNavigator
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tokens"></param>
         public TokenNavigator(IList<Token> tokens)
         {
             _tokens = tokens;
@@ -82,7 +86,9 @@ namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis.PostProcessing
         {
             get { return Index == 0 ? default(Token?) : _tokens[Index - 1]; }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Token NextToken
         {
             get

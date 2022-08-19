@@ -19,8 +19,12 @@ using OfficeOpenXml.Utils;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DecimalCompileResultValidator : CompileResultValidator
     {
+        /// <inheritdoc/>
         public override void Validate(object obj)
         {
             var num = ConvertUtil.GetValueDouble(obj);

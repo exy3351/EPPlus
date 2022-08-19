@@ -19,8 +19,12 @@ using OfficeOpenXml.FormulaParsing;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BoolArgumentParser : ArgumentParser
     {
+        /// <inheritdoc/>
         public override object Parse(object obj)
         {
             if (obj is IRangeInfo)
@@ -38,7 +42,7 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
             }
             return result;
         }
-
+        /// <inheritdoc/>
         public override object Parse(object obj, RoundingMethod roundingMethod)
         {
             return Parse(obj);

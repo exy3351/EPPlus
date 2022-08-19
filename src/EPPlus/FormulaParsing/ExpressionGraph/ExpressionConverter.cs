@@ -19,8 +19,16 @@ using OfficeOpenXml.FormulaParsing;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ExpressionConverter : IExpressionConverter
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         public StringExpression ToStringExpression(Expression expression)
         {
             var result = expression.Compile();
@@ -37,7 +45,11 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
             newExp.Operator = expression.Operator;
             return newExp;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="compileResult"></param>
+        /// <returns></returns>
         public Expression FromCompileResult(CompileResult compileResult)
         {
             switch (compileResult.DataType)
@@ -82,6 +94,9 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
         }
 
         private static IExpressionConverter _instance;
+        /// <summary>
+        /// 
+        /// </summary>
         public static IExpressionConverter Instance
         {
             get

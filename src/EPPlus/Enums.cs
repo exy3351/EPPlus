@@ -168,21 +168,5 @@ namespace OfficeOpenXml
         /// </summary>
         Level9 = 9,
     }
-    /// <summary>
-    /// Specifies with license EPPlus is used under.
-    /// Licensetype must be specified in order to use the library
-    /// <seealso cref="ExcelPackage.LicenseContext"/>
-    /// </summary>
-    public enum LicenseContext
-    {
-        /// <summary>
-        /// You comply with the Polyform Non Commercial License.
-        /// See https://polyformproject.org/licenses/noncommercial/1.0.0/
-        /// </summary>
-        NonCommercial = 0,
-        /// <summary>
-        /// You have a commercial license purchased at https://epplussoftware.com/licenseoverview
-        /// </summary>
-        Commercial = 1
-    }
+    
 }

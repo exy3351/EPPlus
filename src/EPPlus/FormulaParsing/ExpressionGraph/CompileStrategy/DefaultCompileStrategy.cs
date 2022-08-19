@@ -17,13 +17,21 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.CompileStrategy
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DefaultCompileStrategy : CompileStrategy
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
         public DefaultCompileStrategy(Expression expression)
             : base(expression)
         {
 
         }
+        /// <inheritdoc/>
         public override Expression Compile()
         {
             return _expression.MergeWithNext();

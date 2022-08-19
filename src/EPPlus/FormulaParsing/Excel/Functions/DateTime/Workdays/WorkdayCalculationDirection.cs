@@ -18,9 +18,18 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime.Workdays
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum WorkdayCalculationDirection
     {
+        /// <summary>
+        /// 
+        /// </summary>
         Forward = 1,
+        /// <summary>
+        /// 
+        /// </summary>
         Backward = -1
     }
 }

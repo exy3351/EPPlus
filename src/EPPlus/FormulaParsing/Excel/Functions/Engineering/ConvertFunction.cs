@@ -18,12 +18,16 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Engineering
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [FunctionMetadata(
             Category = ExcelFunctionCategory.Engineering,
             EPPlusVersion = "5.1",
             Description = "Calculates the modified Bessel function Yn(x)")]
     public class ConvertFunction : ExcelFunction
     {
+        /// <inheritdoc/>
         public override CompileResult Execute(IEnumerable<FunctionArgument> arguments, ParsingContext context)
         {
             ValidateArguments(arguments, 3);

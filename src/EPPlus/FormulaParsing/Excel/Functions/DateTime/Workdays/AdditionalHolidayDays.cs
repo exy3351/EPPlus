@@ -19,17 +19,25 @@ using OfficeOpenXml.FormulaParsing;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime.Workdays
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class AdditionalHolidayDays
     {
         private readonly FunctionArgument _holidayArg;
         private readonly List<System.DateTime> _holidayDates = new List<System.DateTime>(); 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="holidayArg"></param>
         public AdditionalHolidayDays(FunctionArgument holidayArg)
         {
             _holidayArg = holidayArg;
             Initialize();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public IEnumerable<System.DateTime> AdditionalDates => _holidayDates;
 
         private void Initialize()

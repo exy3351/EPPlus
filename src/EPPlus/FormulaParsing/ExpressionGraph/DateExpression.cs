@@ -18,14 +18,21 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DateExpression : AtomicExpression
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
         public DateExpression(string expression)
             : base(expression)
         {
 
         }
-
+        /// <inheritdoc/>
         public override CompileResult Compile()
         {
             var date = double.Parse(ExpressionString);

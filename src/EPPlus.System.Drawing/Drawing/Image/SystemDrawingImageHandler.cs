@@ -9,8 +9,14 @@ using System.Drawing;
 
 namespace OfficeOpenXml.SystemDrawing.Image
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SystemDrawingImageHandler : IImageHandler
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public SystemDrawingImageHandler()
         {
             if(IsWindows())
@@ -26,7 +32,7 @@ namespace OfficeOpenXml.SystemDrawing.Image
         private bool IsWindows()
         {
             if(Environment.OSVersion.Platform == PlatformID.Unix ||
-#if(NET5_0_OR_GREATER)
+#if NET
                Environment.OSVersion.Platform == PlatformID.Other ||
 #endif
                Environment.OSVersion.Platform == PlatformID.MacOSX)
@@ -38,13 +44,27 @@ namespace OfficeOpenXml.SystemDrawing.Image
                 return true;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public HashSet<ePictureType> SupportedTypes
         {
             get;
         } 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Exception LastException { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="type"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="horizontalResolution"></param>
+        /// <param name="verticalResolution"></param>
+        /// <returns></returns>
 
         public bool GetImageBounds(MemoryStream image, ePictureType type, out double width, out double height, out double horizontalResolution, out double verticalResolution)
         {
@@ -68,6 +88,11 @@ namespace OfficeOpenXml.SystemDrawing.Image
             }
         }
         bool? _validForEnvironment = null;
+      
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool ValidForEnvironment()
         {
             if (_validForEnvironment.HasValue == false)

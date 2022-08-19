@@ -19,12 +19,16 @@ using OfficeOpenXml.FormulaParsing.ExpressionGraph;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Text
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [FunctionMetadata(
         Category = ExcelFunctionCategory.Text,
         EPPlusVersion = "4",
         Description = "Converts a supplied value into text, using a user-specified format")]
     public class Text : ExcelFunction
     {
+        /// <inheritdoc/>
         public override CompileResult Execute(IEnumerable<FunctionArgument> arguments, ParsingContext context)
         {
             ValidateArguments(arguments, 2);

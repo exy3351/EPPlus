@@ -10,13 +10,10 @@
  *************************************************************************************************
   11/07/2021         EPPlus Software AB       Added Html Export
  *************************************************************************************************/
-#if !NET35 && !NET40
 using System.Threading.Tasks;
-#endif
 
 namespace OfficeOpenXml.Export.HtmlExport
 {
-#if !NET35 && !NET40
     internal abstract partial class HtmlWriterBase
     {
         public async Task WriteLineAsync()
@@ -99,5 +96,4 @@ namespace OfficeOpenXml.Export.HtmlExport
             }
         }
     }
-#endif
 }

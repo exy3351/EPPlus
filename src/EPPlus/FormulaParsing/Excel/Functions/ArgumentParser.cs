@@ -17,10 +17,24 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class ArgumentParser
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public abstract object Parse(object obj);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="roundingMethod"></param>
+        /// <returns></returns>
         public abstract object Parse(object obj, RoundingMethod roundingMethod);
     }
 }

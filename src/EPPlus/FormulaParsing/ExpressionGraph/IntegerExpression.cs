@@ -18,29 +18,42 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class IntegerExpression : AtomicExpression
     {
         private double? _compiledValue;
         private bool _negate;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
         public IntegerExpression(string expression)
             : this(expression, false)
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <param name="negate"></param>
         public IntegerExpression(string expression, bool negate)
             : base(expression)
         {
             _negate = negate;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="val"></param>
         public IntegerExpression(double val)
             : base(val.ToString(CultureInfo.InvariantCulture))
         {
             _compiledValue = Math.Floor(val);
         }
-
+        /// <inheritdoc/>
         public override CompileResult Compile()
         {
             double result = _compiledValue ?? double.Parse(ExpressionString, CultureInfo.InvariantCulture);

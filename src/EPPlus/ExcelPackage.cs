@@ -27,7 +27,7 @@ using System.Text;
 using OfficeOpenXml.Packaging;
 using System.Diagnostics;
 using OfficeOpenXml.Constants;
-#if (Core)
+#if NET
 using Microsoft.Extensions.Configuration;
 #endif
 namespace OfficeOpenXml
@@ -141,7 +141,7 @@ namespace OfficeOpenXml
         Stream _stream = null;
         private bool _isExternalStream=false;
         internal ExcelPackage _loadedPackage = null;
-		#region Properties
+
 		/// <summary>
 		/// Extention Schema types
 		/// </summary>
@@ -232,8 +232,7 @@ namespace OfficeOpenXml
         /// </summary>
         public const int MaxRows = 1048576;
         internal readonly List<Action> BeforeSave=new List<Action>();
-        #endregion
-        #region ExcelPackage Constructors
+
         /// <summary>
         /// Create a new instance of the ExcelPackage. 
         /// Output is accessed through the Stream property, using the <see cref="SaveAs(FileInfo)"/> method or later set the <see cref="File" /> property.
@@ -423,14 +422,14 @@ namespace OfficeOpenXml
             Init();
             Load(templateStream, newStream, Password);
         }
-        #endregion
+
         /// <summary>
         /// Init values here
         /// </summary>
         private void Init()
         {
             DoAdjustDrawings = true;
-#if (Core)
+#if NET
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);  //Add Support for codepage 1252
 
             var build = new ConfigurationBuilder()
@@ -675,8 +674,7 @@ namespace OfficeOpenXml
             ns.AddNamespace("xdr", schemaSheetDrawings);
             return ns;
         }
-		
-#region SavePart
+
 		/// <summary>
 		/// Saves the XmlDocument into the package at the specified Uri.
 		/// </summary>
@@ -727,9 +725,6 @@ namespace OfficeOpenXml
             xmlDoc.Save(xr);
 		}
 
-#endregion
-
-#region Dispose
 		/// <summary>
 		/// Closes the package.
 		/// </summary>
@@ -759,9 +754,6 @@ namespace OfficeOpenXml
                 }
             }
 		}
-        #endregion
-
-        #region Save  // ExcelPackage save
 
         /// <summary>
         /// Saves all the components back into the package.
@@ -979,7 +971,7 @@ namespace OfficeOpenXml
                 return _stream;
             }
         }
-#endregion
+
         /// <summary>
         /// Compression option for the package
         /// </summary>        
@@ -1017,7 +1009,7 @@ namespace OfficeOpenXml
             get;
             private set;
         } = new ExcelPackageSettings();
-        #region GetXmlFromUri
+
         /// <summary>
         /// Get the XmlDocument from an URI
         /// </summary>
@@ -1030,8 +1022,7 @@ namespace OfficeOpenXml
             XmlHelper.LoadXmlSafe(xml, part.GetStream()); 
 			return (xml);
 		}
-        #endregion
-        #region GetAsByteArray
+
         /// <summary>
         /// Saves and returns the Excel files as a bytearray.
         /// Note that the package is closed upon save
@@ -1118,7 +1109,7 @@ namespace OfficeOpenXml
                 throw (new ObjectDisposedException("ExcelPackage", "Package has been disposed"));
             }
         }
-        #endregion
+
         /// <summary>
         /// Loads the specified package data from a stream.
         /// </summary>

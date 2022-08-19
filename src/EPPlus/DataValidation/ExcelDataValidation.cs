@@ -232,7 +232,11 @@ namespace OfficeOpenXml.DataValidation
             }
             return address;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="val"></param>
         protected void SetNullableBoolValue(string path, bool? val)
         {
             if (val.HasValue)
@@ -263,8 +267,6 @@ namespace OfficeOpenXml.DataValidation
         {
             DeleteTopNode();
         }
-
-        #region Public properties
 
         /// <summary>
         /// True if the validation type allows operator to be set.
@@ -527,10 +529,6 @@ namespace OfficeOpenXml.DataValidation
             }
         }
 
-        #endregion
-
-        #region Internal properties
-
         internal static string NewId()
         {
             return "{" + Guid.NewGuid().ToString().ToUpperInvariant() + "}";
@@ -552,7 +550,6 @@ namespace OfficeOpenXml.DataValidation
                 return _as;
             }
         }
-        #endregion
 
         /// <summary>
         /// Sets the value to the supplied path

@@ -28,9 +28,7 @@ using OfficeOpenXml.Export.HtmlExport;
 using System.Globalization;
 using OfficeOpenXml.Sorting;
 using OfficeOpenXml.Export.HtmlExport.Interfaces;
-#if !NET35 && !NET40
 using System.Threading.Tasks;
-#endif
 
 namespace OfficeOpenXml.Table
 {
@@ -258,8 +256,6 @@ namespace OfficeOpenXml.Table
             }
         }
 
-        #region Export table data
-
         /// <summary>
         /// Converts the table range to CSV format
         /// </summary>
@@ -289,7 +285,6 @@ namespace OfficeOpenXml.Table
             return Range.ToText(format);
         }
 
-#if !NET35 && !NET40
         /// <summary>
         /// Converts the table range to CSV format
         /// </summary>
@@ -309,7 +304,6 @@ namespace OfficeOpenXml.Table
         {
             return Range.ToTextAsync(format);
         }
-#endif
 
         /// <summary>
         /// Exports the table to a file
@@ -332,7 +326,7 @@ namespace OfficeOpenXml.Table
         {
             Range.SaveToText(stream, format);
         }
-#if !NET35 && !NET40
+
         /// <summary>
         /// Exports the table to a <see cref="Stream"/>
         /// </summary>
@@ -383,7 +377,6 @@ namespace OfficeOpenXml.Table
             await exporter.ExportAsync(stream);
             await stream.FlushAsync();
         }
-#endif
 
         /// <summary>
         /// Exports the table to a <see cref="System.Data.DataTable"/>
@@ -469,8 +462,6 @@ namespace OfficeOpenXml.Table
         {
             return Range.ToDataTable(configHandler);
         }
-
-        #endregion
 
         internal ExcelTableColumnCollection _cols = null;
         /// <summary>
@@ -1140,7 +1131,6 @@ namespace OfficeOpenXml.Table
         /// </summary>
         public ExcelDxfBorderBase TableBorderStyle { get; set; }
 
-        #region Sorting
         private TableSorter _tableSorter = null;
         const string SortStatePath = "d:sortState";
         SortState _sortState = null;
@@ -1219,6 +1209,5 @@ namespace OfficeOpenXml.Table
             _tableSorter.Sort(configuration);
         }
 
-        #endregion
     }
 }

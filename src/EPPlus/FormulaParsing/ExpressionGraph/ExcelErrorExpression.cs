@@ -20,26 +20,37 @@ using OfficeOpenXml.FormulaParsing.Utilities;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ExcelErrorExpression : Expression
     {
         ExcelErrorValue _error;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <param name="error"></param>
         public ExcelErrorExpression(string expression, ExcelErrorValue error)
             : base(expression)
         {
             _error = error;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="error"></param>
         public ExcelErrorExpression(ExcelErrorValue error)
             : this(error.ToString(), error)
         {
             
         }
-
+        /// <inheritdoc/>
         public override bool IsGroupedExpression
         {
             get { return false; }
         }
-
+        /// <inheritdoc/>
         public override CompileResult Compile()
         {
             return new CompileResult(_error, DataType.ExcelError);

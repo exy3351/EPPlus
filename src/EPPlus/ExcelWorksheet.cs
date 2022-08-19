@@ -340,7 +340,6 @@ namespace OfficeOpenXml
                     return _list.Count;
                 }
             }
-            #region IEnumerable<string> Members
 
             /// <summary>
             /// Gets the enumerator for the collection
@@ -351,16 +350,11 @@ namespace OfficeOpenXml
                 return _list.GetEnumerator();
             }
 
-            #endregion
-
-            #region IEnumerable Members
-
             System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
             {
                 return _list.GetEnumerator();
             }
 
-            #endregion
             internal void Clear(ExcelAddressBase Destination)
             {
                 var cse = new CellStoreEnumerator<int>(_cells, Destination._fromRow, Destination._fromCol, Destination._toRow, Destination._toCol);
@@ -406,7 +400,7 @@ namespace OfficeOpenXml
         internal int _minCol = ExcelPackage.MaxColumns;
         internal int _maxCol = 0;
         internal int _nextControlId;
-        #region Worksheet Private Properties
+
         internal ExcelPackage _package;
         private Uri _worksheetUri;
         private string _name;
@@ -416,8 +410,7 @@ namespace OfficeOpenXml
         private XmlDocument _worksheetXml;
         internal ExcelWorksheetView _sheetView;
         internal ExcelHeaderFooter _headerFooter;
-        #endregion
-        #region ExcelWorksheet Constructor
+
         /// <summary>
         /// A worksheet
         /// </summary>
@@ -475,7 +468,6 @@ namespace OfficeOpenXml
             _threadedComments = new ExcelWorksheetThreadedComments(Workbook.ThreadedCommentPersons, this);
         }
 
-        #endregion
         /// <summary>
         /// The Uri to the worksheet within the package
         /// </summary>
@@ -552,7 +544,7 @@ namespace OfficeOpenXml
                 if (_package==null) return -1;
                 return (_positionId - _package._worksheetAdd); 
             }}
-        #region Worksheet Public Properties
+
         /// <summary>
         /// The index in the worksheets collection
         /// </summary>
@@ -1087,7 +1079,7 @@ namespace OfficeOpenXml
                 }
             }
         }
-        #region WorksheetXml
+
         /// <summary>
         /// The XML document holding the worksheet data.
         /// All column, row, cell, pagebreak, merged cell and hyperlink-data are loaded into memory and removed from the document when loading the document.        
@@ -1215,21 +1207,11 @@ namespace OfficeOpenXml
                 isZipStream = false;
             }
             string startXml, endXml;
-#if Core
-            var xr = XmlReader.Create(stream,new XmlReaderSettings() 
-            { 
-                DtdProcessing = DtdProcessing.Prohibit, 
-                IgnoreWhitespace = true 
+            var xr = XmlReader.Create(stream, new XmlReaderSettings()
+            {
+                DtdProcessing = DtdProcessing.Prohibit,
+                IgnoreWhitespace = true
             });
-#else
-            var xr = new XmlTextReader(stream);
-#if NET35
-            xr.ProhibitDtd = true;
-#else
-            xr.DtdProcessing = DtdProcessing.Prohibit;
-#endif
-            xr.WhitespaceHandling = WhitespaceHandling.None;
-#endif            
             LoadColumns(xr);    //columnXml
             startXml = stream.GetBufferAsString(false);
             long start = stream.Position;
@@ -1578,9 +1560,7 @@ namespace OfficeOpenXml
                 if (xr.LocalName == nodeText || xr.LocalName == altNode) return true;
             }
             while (xr.Read());
-#if !Core
             xr.Close();
-#endif
             return false;
         }
         /// <summary>
@@ -2014,8 +1994,7 @@ namespace OfficeOpenXml
         //        retValue = stringNode.InnerText;
         //    return (retValue);
         //}
-#endregion
-#region HeaderFooter
+
         /// <summary>
         /// A reference to the header and footer class which allows you to 
         /// set the header and footer for all odd, even and first pages of the worksheet
@@ -2046,9 +2025,7 @@ namespace OfficeOpenXml
                 return (_headerFooter);
             }
         }
-#endregion
 
-#region "PrinterSettings"
         /// <summary>
         /// Printer settings
         /// </summary>
@@ -2061,9 +2038,7 @@ namespace OfficeOpenXml
                 return ps;
             }
         }
-#endregion
 
-#endregion // END Worksheet Public Properties
         ExcelSlicerXmlSources _slicerXmlSources = null;
         internal ExcelSlicerXmlSources SlicerXmlSources
         {
@@ -2076,8 +2051,6 @@ namespace OfficeOpenXml
                 return _slicerXmlSources;
             }
         }
-
-    #region Worksheet Public Methods
 
         ///// <summary>
         ///// Provides access to an individual cell within the worksheet.
@@ -2280,7 +2253,6 @@ namespace OfficeOpenXml
             View.ActiveCell = ExcelCellBase.GetAddress(Address.Start.Row, Address.Start.Column);
         }
 
-#region InsertRow
         /// <summary>
         /// Inserts new rows into the spreadsheet.  Existing rows below the position are 
         /// shifted down.  All formula are updated to take account of the new row(s).
@@ -2323,8 +2295,7 @@ namespace OfficeOpenXml
         {
             WorksheetRangeInsertHelper.InsertColumn(this, columnFrom, columns, copyStylesFromColumn);
         } 
-#endregion
-#region DeleteRow
+
         /// <summary>
         /// Delete the specified row from the worksheet.
         /// </summary>
@@ -2354,8 +2325,7 @@ namespace OfficeOpenXml
         {
             DeleteRow(rowFrom, rows);
         }
-#endregion
-#region Delete column
+
         /// <summary>
         /// Delete the specified column from the worksheet.
         /// </summary>
@@ -2373,7 +2343,7 @@ namespace OfficeOpenXml
         {
             WorksheetRangeDeleteHelper.DeleteColumn(this, columnFrom, columns);
         }
-#endregion
+
         /// <summary>
         /// Get the cell value from thw worksheet
         /// </summary>
@@ -2460,8 +2430,6 @@ namespace OfficeOpenXml
             SetValueInner(row, col, Value);           
         }
 
-#region MergeCellId
-
         /// <summary>
         /// Get MergeCell Index No
         /// </summary>
@@ -2487,9 +2455,7 @@ namespace OfficeOpenXml
             }
             return 0;
         }
-#endregion
-#endregion //End Worksheet Public Methods
-#region Worksheet Private Methods
+
         internal void UpdateSheetNameInFormulas(string newName, int rowFrom, int rows, int columnFrom, int columns)
         {
           lock (this)
@@ -2534,7 +2500,7 @@ namespace OfficeOpenXml
             }
           }
         }
-#region Worksheet Save
+
         internal void Save()
         {
             DeletePrinterSettings();
@@ -3648,7 +3614,6 @@ namespace OfficeOpenXml
             }
         }
 
-#region Drawing
         internal bool HasDrawingRelationship
         {
             get
@@ -3678,8 +3643,7 @@ namespace OfficeOpenXml
                 _drawings = new ExcelDrawings(_package, this);
             }
         }
-        #endregion
-        #region SparklineGroups
+
         ExcelSparklineGroupCollection _sparklineGroups = null;
         /// <summary>
         /// Collection of Sparkline-objects. 
@@ -3696,7 +3660,7 @@ namespace OfficeOpenXml
                 return _sparklineGroups;
             }
         }
-#endregion
+
         ExcelTableCollection _tables = null;
         /// <summary>
         /// Tables defined in the worksheet.
@@ -3820,9 +3784,6 @@ namespace OfficeOpenXml
                 return _package.Workbook;
             }
         }
-
-#endregion
-#endregion  // END <Worksheet Private Methods
 
         /// <summary>
         /// Get the next ID from a shared formula or an Array formula
@@ -4048,7 +4009,7 @@ namespace OfficeOpenXml
         Packaging.ZipPackagePart IPictureRelationDocument.RelatedPart { get { return Part; }}
 
         Uri IPictureRelationDocument.RelatedUri { get { return _worksheetUri; } }
-        #region Worksheet internal Accessor
+
         /// <summary>
         /// Get accessor of sheet value
         /// </summary>
@@ -4268,6 +4229,6 @@ namespace OfficeOpenXml
 
             return ctrlContainerNode;
         }
-#endregion
+
     }  // END class Worksheet
 }

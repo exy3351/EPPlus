@@ -17,14 +17,21 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class StringExpression : AtomicExpression
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
         public StringExpression(string expression)
             : base(expression)
         {
 
         }
-
+        /// <inheritdoc/>
         public override CompileResult Compile()
         {
             return new CompileResult(ExpressionString, DataType.String);

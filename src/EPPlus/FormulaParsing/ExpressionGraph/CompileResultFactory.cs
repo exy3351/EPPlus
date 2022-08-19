@@ -18,13 +18,27 @@ using OfficeOpenXml.FormulaParsing;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CompileResultFactory
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public virtual CompileResult Create(object obj)
         {
             return Create(obj, 0);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="excelAddressReferenceId"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public virtual CompileResult Create(object obj, int excelAddressReferenceId)
         {
             if ((obj is INameInfo))

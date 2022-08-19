@@ -18,9 +18,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-#if !NET35 && !NET40
 using System.Threading.Tasks;
-#endif
 
 namespace OfficeOpenXml.Export.HtmlExport.Exporters
 {
@@ -199,7 +197,6 @@ namespace OfficeOpenXml.Export.HtmlExport.Exporters
 
             styleWriter.FlushStream();
         }
-#if !NET35 && !NET40
         internal static async Task RenderTableCssAsync(StreamWriter sw, ExcelTable table, HtmlTableExportSettings settings, Dictionary<string, int> styleCache, List<string> datatypes)
         {
             var styleWriter = new EpplusTableCssWriter(sw, table, settings, styleCache);
@@ -257,6 +254,5 @@ namespace OfficeOpenXml.Export.HtmlExport.Exporters
 
             await styleWriter.FlushStreamAsync();
         }
-#endif
     }
 }

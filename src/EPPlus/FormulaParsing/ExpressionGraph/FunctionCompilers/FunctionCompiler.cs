@@ -20,20 +20,32 @@ using OfficeOpenXml.FormulaParsing.Utilities;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class FunctionCompiler
     {
+        /// <summary>
+        /// 
+        /// </summary>
         protected ExcelFunction Function
         {
             get;
             private set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected ParsingContext Context
         {
             get;
             private set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="context"></param>
         public FunctionCompiler(ExcelFunction function, ParsingContext context)
         {
             Require.That(function).Named("function").IsNotNull();
@@ -41,7 +53,12 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
             Function = function;
             Context = context;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="compileResult"></param>
+        /// <param name="dataType"></param>
+        /// <param name="args"></param>
         protected void BuildFunctionArguments(CompileResult compileResult, DataType dataType, List<FunctionArgument> args)
         {
             if (compileResult.Result is IEnumerable<object> && !(compileResult.Result is IRangeInfo))
@@ -67,12 +84,20 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
                 args.Add(funcArg);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="args"></param>
         protected void BuildFunctionArguments(CompileResult result, List<FunctionArgument> args)
         {
             BuildFunctionArguments(result, result.DataType, args);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="children"></param>
+        /// <returns></returns>
         public abstract CompileResult Compile(IEnumerable<Expression> children);
     }
 }

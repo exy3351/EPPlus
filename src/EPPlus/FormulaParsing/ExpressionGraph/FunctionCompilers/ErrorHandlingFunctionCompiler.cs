@@ -19,13 +19,22 @@ using OfficeOpenXml.FormulaParsing.Exceptions;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ErrorHandlingFunctionCompiler : FunctionCompiler
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="context"></param>
         public ErrorHandlingFunctionCompiler(ExcelFunction function, ParsingContext context)
             : base(function, context)
         {
 
         }
+        /// <inheritdoc/>
         public override CompileResult Compile(IEnumerable<Expression> children)
         {
             var args = new List<FunctionArgument>();

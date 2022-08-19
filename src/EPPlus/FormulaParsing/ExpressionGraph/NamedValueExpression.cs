@@ -19,8 +19,16 @@ using OfficeOpenXml.FormulaParsing;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class NamedValueExpression : AtomicExpression
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <param name="parsingContext"></param>
         public NamedValueExpression(string expression, ParsingContext parsingContext)
             : base(expression)
         {
@@ -28,7 +36,7 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
         }
 
         private readonly ParsingContext _parsingContext;
-
+        /// <inheritdoc/>
         public override CompileResult Compile()
         {
             var c = this._parsingContext.Scopes.Current;

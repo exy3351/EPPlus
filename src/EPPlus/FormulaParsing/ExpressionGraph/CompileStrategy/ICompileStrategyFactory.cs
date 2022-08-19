@@ -17,8 +17,16 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.CompileStrategy
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface ICompileStrategyFactory
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         CompileStrategy Create(Expression expression);
     }
 }

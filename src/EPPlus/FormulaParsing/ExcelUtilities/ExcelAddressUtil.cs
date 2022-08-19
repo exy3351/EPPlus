@@ -18,9 +18,20 @@ using System.Text.RegularExpressions;
 
 namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ExcelAddressUtil
     {
+        /// <summary>
+        /// 
+        /// </summary>
         static char[] SheetNameInvalidChars = new char[] { '?', ':', '*', '/', '\\' };
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static bool IsValidAddress(string token)
         {
             int ix;
@@ -51,6 +62,11 @@ namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
             return OfficeOpenXml.ExcelAddress.IsValidAddress(token);
         }
         readonly static char[] NameInvalidChars = new char[] { '!', '@', '#', '$', '£', '%', '&', '/', '(', ')', '[', ']', '{', '}', '<', '>', '=', '+', '*', '-', '~', '^', ':', ';', '|', ',', ' ' };
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="name"></param>
+       /// <returns></returns>
         public static bool IsValidName(string name)
         {
             if (string.IsNullOrEmpty(name))
@@ -76,6 +92,11 @@ namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
             //TODO:Add check for functionnames.
             return true;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static string GetValidName(string name)
         {
             if (string.IsNullOrEmpty(name))

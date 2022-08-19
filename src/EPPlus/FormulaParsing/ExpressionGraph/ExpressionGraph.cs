@@ -17,12 +17,25 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ExpressionGraph
     {
         private List<Expression> _expressions = new List<Expression>();
+        /// <summary>
+        /// 
+        /// </summary>
         public IEnumerable<Expression> Expressions { get { return _expressions; } }
+        /// <summary>
+        /// 
+        /// </summary>
         public Expression Current { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         public Expression Add(Expression expression)
         {
             _expressions.Add(expression);
@@ -34,13 +47,18 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
             Current = expression;
             return expression;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void Reset()
         {
             _expressions.Clear();
             Current = null;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
         public void Remove(Expression item)
         {
             if (item == Current)

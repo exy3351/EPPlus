@@ -19,14 +19,22 @@ using OfficeOpenXml.FormulaParsing.Excel.Functions;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DefaultCompiler : FunctionCompiler
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="context"></param>
         public DefaultCompiler(ExcelFunction function, ParsingContext context)
             : base(function, context)
         {
 
         }
-
+        /// <inheritdoc/>
         public override CompileResult Compile(IEnumerable<Expression> children)
         {
             var args = new List<FunctionArgument>();

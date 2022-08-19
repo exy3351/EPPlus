@@ -14,8 +14,17 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Engineering.Implementations
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BesselIimpl : BesselBase
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
         public FinanceCalcResult<double> BesselI(double x, int n)
         {
             const int nMaxIteration = 2000;

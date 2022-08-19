@@ -18,21 +18,26 @@ using OfficeOpenXml.FormulaParsing.ExpressionGraph;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ArgumentParserFactory
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dataType"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public virtual ArgumentParser CreateArgumentParser(DataType dataType)
         {
-            switch (dataType)
+            return dataType switch
             {
-                case DataType.Integer:
-                    return new IntArgumentParser();
-                case DataType.Boolean:
-                    return new BoolArgumentParser();
-                case DataType.Decimal:
-                    return new DoubleArgumentParser();
-                default:
-                    throw new InvalidOperationException("non supported argument parser type " + dataType.ToString());
-            }
+                DataType.Integer => new IntArgumentParser(),
+                DataType.Boolean => new BoolArgumentParser(),
+                DataType.Decimal => new DoubleArgumentParser(),
+                _ => throw new InvalidOperationException("non supported argument parser type " + dataType.ToString()),
+            };
         }
     }
 }

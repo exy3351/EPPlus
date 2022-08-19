@@ -17,8 +17,16 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Finance.Implementations
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class FinanceCalcResult<T>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="result"></param>
         public FinanceCalcResult(T result)
         {
             Result = result;
@@ -39,27 +47,43 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Finance.Implementations
                 DataType = DataType.Unknown;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="dataType"></param>
         public FinanceCalcResult(T result, DataType dataType)
         {
             Result = result;
             DataType = dataType;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="error"></param>
         public FinanceCalcResult(eErrorType error)
         {
             HasError = true;
             ExcelErrorType = error;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public T Result { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public DataType DataType { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool HasError
         {
             get; private set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public eErrorType ExcelErrorType { get; private set; }
     }
 }

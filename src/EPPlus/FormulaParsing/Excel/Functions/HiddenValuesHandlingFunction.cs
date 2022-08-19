@@ -24,6 +24,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
     /// </summary>
     public abstract class HiddenValuesHandlingFunction : ExcelFunction
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public HiddenValuesHandlingFunction()
         {
             IgnoreErrors = true;
@@ -45,11 +48,19 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
             get; set;
         }
 
+        /// <inheritdoc/>
         protected override IEnumerable<ExcelDoubleCellValue> ArgsToDoubleEnumerable(IEnumerable<FunctionArgument> arguments, ParsingContext context)
         {
             return ArgsToDoubleEnumerable(arguments, context, IgnoreErrors, false);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="arguments"></param>
+        /// <param name="context"></param>
+        /// <param name="ignoreErrors"></param>
+        /// <param name="ignoreNonNumeric"></param>
+        /// <returns></returns>
         protected IEnumerable<ExcelDoubleCellValue> ArgsToDoubleEnumerable(IEnumerable<FunctionArgument> arguments, ParsingContext context, bool ignoreErrors, bool ignoreNonNumeric)
         {
             if (!arguments.Any())
@@ -63,7 +74,12 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
             }
             return base.ArgsToDoubleEnumerable(IgnoreHiddenValues, ignoreErrors, arguments, context, ignoreNonNumeric);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
         protected bool ShouldIgnore(ICellInfo c, ParsingContext context)
         {
             if(CellStateHelper.ShouldIgnore(IgnoreHiddenValues, c, context))
@@ -76,6 +92,12 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
             }
             return false;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="arg"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
         protected bool ShouldIgnore(FunctionArgument arg, ParsingContext context)
         {
             if (CellStateHelper.ShouldIgnore(IgnoreHiddenValues, arg, context))

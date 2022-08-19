@@ -22,6 +22,9 @@ using OfficeOpenXml.FormulaParsing;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CompileResult
     {
         private static CompileResult _empty = new CompileResult(null, DataType.Empty);
@@ -53,12 +56,21 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
         }
 
         private double? _resultNumeric;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="dataType"></param>
         public CompileResult(object result, DataType dataType)
             : this(result, dataType, 0)
         { 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="dataType"></param>
+        /// <param name="excelAddressReferenceId"></param>
         public CompileResult(object result, DataType dataType, int excelAddressReferenceId)
         {
             if(result is ExcelDoubleCellValue)
@@ -72,26 +84,36 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
             DataType = dataType;
             ExcelAddressReferenceId = excelAddressReferenceId;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="errorType"></param>
         public CompileResult(eErrorType errorType)
         {
             Result = ExcelErrorValue.Create(errorType);
             DataType = DataType.ExcelError;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="errorValue"></param>
         public CompileResult(ExcelErrorValue errorValue)
         {
             Require.Argument(errorValue).IsNotNull("errorValue");
             Result = errorValue;
             DataType = DataType.ExcelError;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public object Result
         {
             get;
             private set;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public object ResultValue
         {
             get
@@ -107,7 +129,9 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
                 }
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public double ResultNumeric
         {
             get
@@ -153,13 +177,17 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 				return _resultNumeric.Value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public DataType DataType
         {
             get;
             private set;
         }
-        
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsNumeric
         {
             get 
@@ -167,7 +195,9 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
                 return DataType == DataType.Decimal || DataType == DataType.Integer || DataType == DataType.Empty || DataType == DataType.Boolean || DataType == DataType.Date; 
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsNumericString
         {
             get
@@ -180,7 +210,9 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
                 return false;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsPercentageString
         {
             get
@@ -194,7 +226,9 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
             }
             
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
 		public bool IsDateString
 		{
 			get
@@ -207,13 +241,21 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
                 return false;
 			}
 		}
-
+        /// <summary>
+        /// 
+        /// </summary>
 		public bool IsResultOfSubtotal { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsHiddenCell { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int ExcelAddressReferenceId { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsResultOfResolvedExcelRange
         {
             get { return ExcelAddressReferenceId > 0; }

@@ -17,9 +17,22 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IExpressionConverter
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         StringExpression ToStringExpression(Expression expression);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="compileResult"></param>
+        /// <returns></returns>
         Expression FromCompileResult(CompileResult compileResult);
     }
 }

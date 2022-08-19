@@ -17,31 +17,40 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class EnumerableExpression : Expression
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public EnumerableExpression()
             : this(new ExpressionCompiler())
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expressionCompiler"></param>
         public EnumerableExpression(IExpressionCompiler expressionCompiler)
         {
             _expressionCompiler = expressionCompiler;
         }
 
         private readonly IExpressionCompiler _expressionCompiler;
-
+        /// <inheritdoc/>
         public override bool IsGroupedExpression
         {
             get { return false; }
         }
-
+        /// <inheritdoc/>
         public override Expression PrepareForNextChild()
         {
             return this;
         }
-
+        /// <inheritdoc/>
         public override CompileResult Compile()
         {
             var result = new List<object>();

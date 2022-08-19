@@ -20,8 +20,21 @@ using OfficeOpenXml.Utils;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DoubleEnumerableArgConverter : CollectionFlattener<ExcelDoubleCellValue>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ignoreHidden"></param>
+        /// <param name="ignoreErrors"></param>
+        /// <param name="arguments"></param>
+        /// <param name="context"></param>
+        /// <param name="ignoreNonNumeric"></param>
+        /// <returns></returns>
+        /// <exception cref="ExcelErrorValueException"></exception>
         public virtual IEnumerable<ExcelDoubleCellValue> ConvertArgs(bool ignoreHidden, bool ignoreErrors, IEnumerable<FunctionArgument> arguments, ParsingContext context, bool ignoreNonNumeric = false)
         {
             return base.FuncArgsToFlatEnumerable(arguments, (arg, argList) =>
@@ -49,7 +62,12 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions
                     }
                 });
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="arguments"></param>
+        /// <param name="ignoreHidden"></param>
+        /// <returns></returns>
         public virtual IEnumerable<ExcelDoubleCellValue> ConvertArgsIncludingOtherTypes(IEnumerable<FunctionArgument> arguments, bool ignoreHidden)
         {
             return base.FuncArgsToFlatEnumerable(arguments, (arg, argList) =>

@@ -14,10 +14,18 @@ using static OfficeOpenXml.FormulaParsing.ExcelDataProvider;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Math
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class RangeOrValue
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public object Value { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public IRangeInfo Range { get; set; }
     }
 }

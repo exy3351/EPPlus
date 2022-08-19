@@ -17,9 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-#if !NET35 && !NET40
 using System.Threading.Tasks;
-#endif
 
 namespace OfficeOpenXml.Export.HtmlExport.Interfaces
 {
@@ -65,7 +63,6 @@ namespace OfficeOpenXml.Export.HtmlExport.Interfaces
         /// <exception cref="IOException"></exception>
         void RenderCss(Stream stream);
 
-#if !NET35 && !NET40
         /// <summary>
         /// Exports an <see cref="ExcelTable"/> to a html string
         /// </summary>
@@ -97,6 +94,5 @@ namespace OfficeOpenXml.Export.HtmlExport.Interfaces
         /// </summary>
         /// <returns>A html table</returns>
         Task RenderCssAsync(Stream stream);
-#endif
     }
 }

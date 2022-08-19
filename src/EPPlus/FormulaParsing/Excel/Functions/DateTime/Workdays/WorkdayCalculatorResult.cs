@@ -18,8 +18,18 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime.Workdays
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WorkdayCalculatorResult
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numberOfWorkdays"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <param name="direction"></param>
         public WorkdayCalculatorResult(int numberOfWorkdays, System.DateTime startDate, System.DateTime endDate, WorkdayCalculationDirection direction)
         {
             NumberOfWorkdays = numberOfWorkdays;
@@ -27,12 +37,21 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime.Workdays
             EndDate = endDate;
             Direction = direction;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int NumberOfWorkdays { get; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public System.DateTime StartDate { get; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public System.DateTime EndDate { get; }
+        /// <summary>
+        /// 
+        /// </summary>
         public WorkdayCalculationDirection Direction { get; set; }
     }
 }

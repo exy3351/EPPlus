@@ -14,28 +14,32 @@ using System;
 
 namespace OfficeOpenXml.Interfaces.Drawing.Text
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Flags]
     public enum MeasurementFontStyles
     {
-        //
-        // Summary:
-        //     Normal text.
+        /// <summary>
+        /// Normal text.
+        /// </summary>
+        
         Regular = 0,
-        //
-        // Summary:
-        //     Bold text.
+        /// <summary>
+        /// Bold text.
+        /// </summary>
         Bold = 1,
-        //
-        // Summary:
-        //     Italic text.
+        /// <summary>
+        /// Italic text.
+        /// </summary>
         Italic = 2,
-        //
-        // Summary:
-        //     Underlined text.
+        /// <summary>
+        /// Underlined text.
+        /// </summary>
         Underline = 4,
-        //
-        // Summary:
-        //     Text with a line through the middle.
+        /// <summary>
+        ///  Text with a line through the middle.
+        /// </summary>
         Strikeout = 8
     }
 }

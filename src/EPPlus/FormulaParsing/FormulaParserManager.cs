@@ -147,13 +147,22 @@ namespace OfficeOpenXml.FormulaParsing
         {
             _parser.Configure(c => c.DetachLogger());
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="range"></param>
+        /// <returns></returns>
         public IEnumerable<IFormulaCellInfo> GetCalculationChain(ExcelRangeBase range)
         {
             Require.That(range).IsNotNull();
             return GetCalculationChain(range, null);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="range"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public IEnumerable<IFormulaCellInfo> GetCalculationChain(ExcelRangeBase range, ExcelCalculationOption options)
         {
             Require.That(range).IsNotNull();

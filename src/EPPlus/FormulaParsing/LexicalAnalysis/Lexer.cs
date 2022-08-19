@@ -19,14 +19,26 @@ using OfficeOpenXml.FormulaParsing.Excel.Functions;
 
 namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Lexer : ILexer
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="functionRepository"></param>
+        /// <param name="nameValueProvider"></param>
         public Lexer(FunctionRepository functionRepository, INameValueProvider nameValueProvider)
             :this(new SourceCodeTokenizer(functionRepository, nameValueProvider), new SyntacticAnalyzer())
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tokenizer"></param>
+        /// <param name="analyzer"></param>
         public Lexer(ISourceCodeTokenizer tokenizer, ISyntacticAnalyzer analyzer)
         {
             _tokenizer = tokenizer;
@@ -35,10 +47,21 @@ namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
 
         private readonly ISourceCodeTokenizer _tokenizer;
         private readonly ISyntacticAnalyzer _analyzer;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public IEnumerable<Token> Tokenize(string input)
         {
             return Tokenize(input, null);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="worksheet"></param>
+        /// <returns></returns>
         public IEnumerable<Token> Tokenize(string input, string worksheet)
         {
             var tokens = _tokenizer.Tokenize(input, worksheet);

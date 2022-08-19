@@ -13,8 +13,16 @@
 
 namespace OfficeOpenXml.Interfaces.Drawing.Text
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public struct TextMeasurement
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         public TextMeasurement(float width, float height)
         {
             Width = width;
@@ -30,7 +38,9 @@ namespace OfficeOpenXml.Interfaces.Drawing.Text
         /// Height of the text
         /// </summary>
         public float Height { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static TextMeasurement Empty
         {
             get { return new TextMeasurement(-1, -1); }

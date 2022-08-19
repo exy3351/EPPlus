@@ -18,6 +18,9 @@ using System.Threading;
 
 namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class TokenSeparatorProvider : ITokenSeparatorProvider
     {
        private static readonly Dictionary<string, Token> _tokens;

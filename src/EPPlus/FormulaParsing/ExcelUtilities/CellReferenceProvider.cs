@@ -18,8 +18,17 @@ using OfficeOpenXml.FormulaParsing.LexicalAnalysis;
 
 namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CellReferenceProvider
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cellFormula"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public virtual IEnumerable<string> GetReferencedAddresses(string cellFormula, ParsingContext context)
         {
             var resultCells = new List<string>();

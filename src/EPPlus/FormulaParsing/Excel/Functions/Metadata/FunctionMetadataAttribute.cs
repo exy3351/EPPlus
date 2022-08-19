@@ -25,7 +25,9 @@ namespace OfficeOpenXml.FormulaParsing.Excel.Functions.Metadata
         /// Short description of the function.
         /// </summary>
         public string Description { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string IntroducedInExcelVersion { get; set; }
 
     }

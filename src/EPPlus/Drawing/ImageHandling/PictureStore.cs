@@ -47,11 +47,8 @@ namespace OfficeOpenXml.Drawing
         internal ImageInfo AddImage(byte[] image, Uri uri, ePictureType? pictureType)
         {
             if (pictureType.HasValue == false) pictureType = ePictureType.Jpg;
-#if (Core)
             var hashProvider = SHA1.Create();
-#else
-            var hashProvider = new SHA1CryptoServiceProvider();
-#endif
+
             var hash = BitConverter.ToString(hashProvider.ComputeHash(image)).Replace("-", "");
             lock (_images)
             {
@@ -145,11 +142,8 @@ namespace OfficeOpenXml.Drawing
 
         internal ImageInfo LoadImage(byte[] image, Uri uri, Packaging.ZipPackagePart imagePart)
         {
-#if (Core)
             var hashProvider = SHA1.Create();
-#else
-            var hashProvider = new SHA1CryptoServiceProvider();
-#endif
+
             var hash = BitConverter.ToString(hashProvider.ComputeHash(image)).Replace("-", "");
             if (_images.ContainsKey(hash))
             {
@@ -206,11 +200,8 @@ namespace OfficeOpenXml.Drawing
 
         internal static string GetHash(byte[] image)
         {
-#if (Core)
             var hashProvider = SHA1.Create();
-#else
-            var hashProvider = new SHA1CryptoServiceProvider();
-#endif
+
             return BitConverter.ToString(hashProvider.ComputeHash(image)).Replace("-", "");
         }
 

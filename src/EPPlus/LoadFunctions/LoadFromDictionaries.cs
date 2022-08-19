@@ -24,13 +24,11 @@ namespace OfficeOpenXml.LoadFunctions
 {
     internal class LoadFromDictionaries : LoadFunctionBase
     {
-#if !NET35 && !NET40
         public LoadFromDictionaries(ExcelRangeBase range, IEnumerable<dynamic> items, LoadFromDictionariesParams parameters)
             : this(range, ConvertToDictionaries(items), parameters)
         {
 
         }
-#endif
 
         public LoadFromDictionaries(ExcelRangeBase range, IEnumerable<IDictionary<string, object>> items, LoadFromDictionariesParams parameters) 
             : base(range, parameters)
@@ -64,7 +62,6 @@ namespace OfficeOpenXml.LoadFunctions
         private readonly HeaderParsingTypes _headerParsingType;
         private readonly CultureInfo _cultureInfo;
 
-#if !NET35 && !NET40
         private static IEnumerable<IDictionary<string, object>> ConvertToDictionaries(IEnumerable<dynamic> items)
         {
             var result = new List<Dictionary<string, object>>();
@@ -99,8 +96,6 @@ namespace OfficeOpenXml.LoadFunctions
             }
             return result;
         }
-
-#endif        
 
         protected override void LoadInternal(object[,] values, out Dictionary<int, FormulaCell> formulaCells, out Dictionary<int, string> columnFormats)
         {

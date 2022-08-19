@@ -23,10 +23,18 @@ using IndexFunc = OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup.Inde
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class FunctionCompilerFactory
     {
         private readonly Dictionary<Type, FunctionCompiler> _specialCompilers = new Dictionary<Type, FunctionCompiler>();
         private readonly ParsingContext _context;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="repository"></param>
+        /// <param name="context"></param>
         public FunctionCompilerFactory(FunctionRepository repository, ParsingContext context)
         {
             Require.That(context).Named("context").IsNotNull();
@@ -46,7 +54,11 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
               _specialCompilers.Add(key, repository.CustomCompilers[key]);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="function"></param>
+        /// <returns></returns>
         private FunctionCompiler GetCompilerByType(ExcelFunction function)
         {
             var funcType = function.GetType();
@@ -58,6 +70,11 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
             else if (function.IsErrorHandlingFunction) return new ErrorHandlingFunctionCompiler(function, _context);
             return new DefaultCompiler(function, _context);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="function"></param>
+        /// <returns></returns>
         public virtual FunctionCompiler Create(ExcelFunction function)
         { 
             return GetCompilerByType(function);

@@ -18,21 +18,37 @@ using OfficeOpenXml.FormulaParsing.Exceptions;
 
 namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class FormulaDependency
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scope"></param>
         public FormulaDependency(ParsingScope scope)
 	    {   
             ScopeId = scope.ScopeId;
             Address = scope.Address;
 	    }
+        /// <summary>
+        /// 
+        /// </summary>
         public Guid ScopeId { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public RangeAddress Address { get; private set; }
 
         private List<RangeAddress> _referencedBy = new List<RangeAddress>();
 
         private List<RangeAddress> _references = new List<RangeAddress>();
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rangeAddress"></param>
+        /// <exception cref="CircularReferenceException"></exception>
         public virtual void AddReferenceFrom(RangeAddress rangeAddress)
         {
             if (Address.CollidesWith(rangeAddress) || _references.Exists(x => x.CollidesWith(rangeAddress)))
@@ -41,7 +57,11 @@ namespace OfficeOpenXml.FormulaParsing.ExcelUtilities
             }
             _referencedBy.Add(rangeAddress);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="rangeAddress"></param>
+        /// <exception cref="CircularReferenceException"></exception>
         public virtual void AddReferenceTo(RangeAddress rangeAddress)
         {
             if (Address.CollidesWith(rangeAddress) || _referencedBy.Exists(x => x.CollidesWith(rangeAddress)))

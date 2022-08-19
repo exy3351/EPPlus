@@ -21,8 +21,16 @@ using OfficeOpenXml.FormulaParsing.Utilities;
 
 namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class IfErrorFunctionCompiler : FunctionCompiler
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="context"></param>
         public IfErrorFunctionCompiler(ExcelFunction function, ParsingContext context)
             : base(function, context)
         {
@@ -30,6 +38,7 @@ namespace OfficeOpenXml.FormulaParsing.ExpressionGraph.FunctionCompilers
           
         }
 
+        /// <inheritdoc/>
         public override CompileResult Compile(IEnumerable<Expression> children)
         {
             if (children.Count() != 2) throw new ExcelErrorValueException(eErrorType.Value);

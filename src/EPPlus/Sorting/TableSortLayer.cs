@@ -17,8 +17,15 @@ using System.Text;
 
 namespace OfficeOpenXml.Sorting
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class TableSortLayer : SortLayerBase
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="options"></param>
         internal TableSortLayer(TableSortOptions options)
             : base(options)
         {

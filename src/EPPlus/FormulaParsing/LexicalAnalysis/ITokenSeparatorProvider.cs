@@ -17,14 +17,32 @@ using System.Text;
 
 namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface ITokenSeparatorProvider
     {
+        /// <summary>
+        /// 
+        /// </summary>
         IDictionary<string, Token> Tokens { get; }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         bool IsOperator(string item);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="part"></param>
+        /// <returns></returns>
         bool IsPossibleLastPartOfMultipleCharOperator(string part);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="candidate"></param>
+        /// <returns></returns>
         Token? GetToken(string candidate);
 
     }
