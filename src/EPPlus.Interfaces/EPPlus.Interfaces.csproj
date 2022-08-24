@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<AssemblyName>GISQ.EPPlus.Interfaces</AssemblyName>
-		
+		<AssemblyName>EPPlus.Interfaces</AssemblyName>
+		<PackageId>GISQ.$(AssemblyName)</PackageId>
 		<PackageLicenseFile>license.md</PackageLicenseFile>
 		<RepositoryType>git</RepositoryType>
 		<SignAssembly>true</SignAssembly>

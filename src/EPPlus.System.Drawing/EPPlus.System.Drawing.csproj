@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<AssemblyName>GISQ.EPPlus.System.Drawing</AssemblyName>
-		
+		<AssemblyName>EPPlus.System.Drawing</AssemblyName>
+		<PackageId>GISQ.$(AssemblyName)</PackageId>
 		<SignAssembly>true</SignAssembly>
 		<PackageLicenseFile>license.md</PackageLicenseFile>
 		<AssemblyOriginatorKeyFile>EPPlus.System.Drawing.snk</AssemblyOriginatorKeyFile>
