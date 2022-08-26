@@ -276,7 +276,7 @@ namespace EPPlusTest.Drawing.Chart
         [TestMethod]
         public void CopyBoxWhisker()
         {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            //ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var package = new ExcelPackage();
             var package2 = new ExcelPackage();
             var worksheet1 = package2.Workbook.Worksheets.Add("Test_BoxWhiskers");
